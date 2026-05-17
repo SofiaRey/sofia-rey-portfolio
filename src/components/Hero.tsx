@@ -32,8 +32,8 @@ export function Hero() {
       className="relative z-10 min-h-screen flex items-end justify-center px-6 pb-24"
     >
       <div className="max-w-5xl mx-auto w-full">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-32">
-          <h1 className="font-serif text-3xl md:text-4xl text-right">
+        <div className="grid md:grid-cols-2 gap-2 md:gap-32">
+          <h1 className="font-serif text-3xl md:text-4xl text-left md:text-right">
             soy
           </h1>
           <div className="font-serif text-3xl md:text-4xl text-left overflow-hidden h-[1.2em] relative">

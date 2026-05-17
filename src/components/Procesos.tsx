@@ -42,7 +42,7 @@ export function Procesos() {
   const [paused, setPaused] = useState(false);
 
   return (
-    <section id="procesos" className="relative z-10 py-32 md:py-48 px-6">
+    <section id="procesos" className="relative z-10 py-16 md:py-48 px-6">
       <div className="max-w-5xl mx-auto">
         {/* Heading aligned to right column (like curiosity) */}
         <FadeIn>
@@ -50,7 +50,8 @@ export function Procesos() {
             <div>{/* empty left col */}</div>
             <div className="text-left">
               <h2 className="font-serif text-3xl md:text-5xl">
-                mis <span className="text-accent">procesos</span>
+                mis<br className="md:hidden" />
+                {" "}<span className="text-accent">procesos</span>
               </h2>
             </div>
           </div>

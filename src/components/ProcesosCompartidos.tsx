@@ -17,13 +17,14 @@ export function ProcesosCompartidos() {
       <div className="max-w-5xl mx-auto">
         {/* Using same 2-col grid: text in left col (like versatility), images in right col (like curiosity) */}
         <div className="grid md:grid-cols-2 gap-12 md:gap-32">
-          {/* Left col: text — right-aligned (like versatility) */}
+          {/* Left col: text — left on mobile, right-aligned on desktop (like versatility) */}
           <FadeIn>
-            <div className="text-right">
+            <div className="text-left md:text-right">
               <h2 className="font-serif text-3xl md:text-4xl mb-6">
-                procesos <span className="text-accent">compartidos</span>
+                procesos<br className="md:hidden" />
+                {" "}<span className="text-accent">compartidos</span>
               </h2>
-              <p className="text-sm leading-relaxed ml-auto max-w-md">
+              <p className="text-sm leading-relaxed md:ml-auto max-w-md">
                 En este recorrido también aprendí a valorar lo compartido:
                 trabajar en equipo, cruzar perspectivas y construir con otros.
                 Creo que el diseño crece cuando se abre al intercambio, cuando
@@ -51,8 +52,8 @@ export function ProcesosCompartidos() {
           </FadeIn>
         </div>
 
-        {/* Mobile: auto-scrolling carousel */}
-        <div className="md:hidden w-full overflow-hidden mt-8">
+        {/* Mobile: auto-scrolling carousel — full bleed */}
+        <div className="md:hidden w-screen -mx-6 overflow-hidden mt-8">
           <div className="flex animate-marquee gap-4">
             {[...PHOTOS, ...PHOTOS].map((photo, i) => (
               <div

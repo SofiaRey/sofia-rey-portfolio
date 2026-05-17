@@ -177,17 +177,13 @@ export function FrameCanvas() {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100vw",
-        height: "100vh",
-        zIndex: 0,
-      }}
-      aria-hidden="true"
-    />
+    <>
+      <canvas
+        ref={canvasRef}
+        className="fixed top-0 left-0 md:left-0 w-screen h-screen max-md:left-[30%] max-md:w-[70vw]"
+        style={{ zIndex: 0 }}
+        aria-hidden="true"
+      />
+    </>
   );
 }

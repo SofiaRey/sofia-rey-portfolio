@@ -42,7 +42,7 @@ export function About() {
         </FadeIn>
 
         {/* Traits — zigzag using the same 2-col grid */}
-        <div className="flex flex-col gap-24 md:gap-32">
+        <div className="flex flex-col gap-12 md:gap-32">
           <FadeIn delay={0}>
             <div className="grid md:grid-cols-2 gap-8 md:gap-32">
               <div className="text-left md:text-right">
