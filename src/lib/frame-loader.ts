@@ -5,9 +5,9 @@
  */
 
 const TOTAL_FRAMES = 378;
-const INTRO_FRAMES = 150; // frames 0-149 play during 5s intro, 150-377 are scroll-driven
+const INTRO_FRAMES = 70; // ~5 seconds of video at 13.98fps, played back over 5s (1:1 speed)
 const INTRO_PRELOAD = 30; // preload this many before starting intro (rest loads during playback)
-const FRAME_EXTENSION = "jpg";
+const FRAME_EXTENSION = "webp";
 
 function getFrameDir(): string {
   return window.innerWidth <= 768 ? "/frames/mobile" : "/frames/desktop";

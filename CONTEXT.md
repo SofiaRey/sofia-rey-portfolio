@@ -5,15 +5,15 @@ A creative portfolio website for Sofía Rey, multimedia designer. Single-page si
 ## Language
 
 **Frame Sequence**:
-A set of pre-extracted JPEG images from a source video, rendered to a canvas element based on scroll position or timed playback.
+A set of pre-extracted WebP images from a source video, rendered to a canvas element based on scroll position or timed playback.
 _Avoid_: Video, animation frames, sprites
 
 **Intro Playback**:
-The automatic playback of frames 0–149 at page load (5 seconds) before scroll-driven mode activates. Starts after the first 30 frames are preloaded; remaining frames load during playback.
+The automatic playback of frames 0–69 at page load (5 seconds at real-time speed) before scroll-driven mode activates. Starts after the first 30 frames are preloaded; remaining frames load during playback.
 _Avoid_: Auto-play video, opening animation
 
 **Scroll-Driven Mode**:
-The state after Intro Playback completes, where the current frame is determined by the user's scroll position mapped to frames 150–377.
+The state after Intro Playback completes, where the current frame is determined by the user's scroll position mapped to frames 70–377.
 _Avoid_: Scroll animation, parallax
 
 **Noise Overlay**:
@@ -38,7 +38,7 @@ _Avoid_: Text carousel, typing effect
 ## Example dialogue
 
 > **Dev:** "When does the Frame Sequence switch from Intro Playback to Scroll-Driven Mode?"
-> **Domain expert:** "The intro always plays to completion (150 frames over 5 seconds). Once it finishes, the canvas immediately shows whichever frame corresponds to the current scroll position."
+> **Domain expert:** "The intro always plays to completion (70 frames over 5 seconds at 1:1 speed). Once it finishes, the canvas immediately shows whichever frame corresponds to the current scroll position."
 
 ## Flagged ambiguities
 
