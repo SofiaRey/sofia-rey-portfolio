@@ -1,10 +1,12 @@
 /**
  * Frame loader utility.
- * Preloads intro frames eagerly, then background-loads scroll frames.
+ * Preloads a small batch of intro frames eagerly, then continues loading
+ * the rest in the background while the intro animation plays.
  */
 
-const TOTAL_FRAMES = 280;
-const INTRO_FRAMES = 52; // 5 seconds of source video at ~10.36fps extraction rate
+const TOTAL_FRAMES = 378;
+const INTRO_FRAMES = 150; // frames 0-149 play during 5s intro, 150-377 are scroll-driven
+const INTRO_PRELOAD = 30; // preload this many before starting intro (rest loads during playback)
 const FRAME_EXTENSION = "jpg";
 
 function getFrameDir(): string {
@@ -19,7 +21,8 @@ function getFramePath(index: number): string {
 
 export type FrameLoaderState = {
   frames: (HTMLImageElement | null)[];
-  introLoaded: boolean;
+  introReady: boolean; // enough frames to start playback
+  introLoaded: boolean; // all intro frames loaded
   allLoaded: boolean;
   loadedCount: number;
 };
@@ -27,13 +30,15 @@ export type FrameLoaderState = {
 type OnProgress = (state: FrameLoaderState) => void;
 
 /**
- * Loads all frames in two phases:
- * 1. Intro frames (0-149) — loaded eagerly, resolves when all are ready
- * 2. Scroll frames (150-279) — loaded in background after intro completes
+ * Loads all frames in phases:
+ * 1. First INTRO_PRELOAD frames — once loaded, signals introReady so playback can start
+ * 2. Remaining intro frames (INTRO_PRELOAD..149) — loaded concurrently during playback
+ * 3. Scroll frames (150-279) — loaded after all intro frames are done
  */
 export function loadFrames(onProgress: OnProgress): Promise<FrameLoaderState> {
   const state: FrameLoaderState = {
     frames: new Array(TOTAL_FRAMES).fill(null),
+    introReady: false,
     introLoaded: false,
     allLoaded: false,
     loadedCount: 0,
@@ -49,8 +54,12 @@ export function loadFrames(onProgress: OnProgress): Promise<FrameLoaderState> {
         state.frames[i] = img;
         state.loadedCount++;
         introLoadedCount++;
-        // Notify on every frame so we can draw the first one immediately
-        onProgress(state);
+
+        // Signal ready once we have enough frames to start smooth playback
+        if (!state.introReady && introLoadedCount >= INTRO_PRELOAD) {
+          state.introReady = true;
+          onProgress(state);
+        }
 
         if (introLoadedCount === INTRO_FRAMES) {
           state.introLoaded = true;
@@ -62,6 +71,12 @@ export function loadFrames(onProgress: OnProgress): Promise<FrameLoaderState> {
       img.onerror = () => {
         console.warn(`Failed to load frame ${i}: ${getFramePath(i)}`);
         introLoadedCount++;
+
+        if (!state.introReady && introLoadedCount >= INTRO_PRELOAD) {
+          state.introReady = true;
+          onProgress(state);
+        }
+
         if (introLoadedCount === INTRO_FRAMES) {
           state.introLoaded = true;
           onProgress(state);

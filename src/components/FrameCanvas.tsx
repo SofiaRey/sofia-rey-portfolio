@@ -101,12 +101,15 @@ export function FrameCanvas() {
     }
 
     // --- Intro auto-play ---
+    // Starts as soon as the first frame is available. Runs for a full 5 seconds.
+    // drawFrame handles missing frames by finding the nearest loaded one.
+    const introDuration = 5000;
+
     function playIntro() {
       if (stateRef.current.introStarted) return;
       stateRef.current.introStarted = true;
 
       const startTime = performance.now();
-      const introDuration = 5000; // 5 seconds intro playback
 
       function animate(now: number) {
         const elapsed = now - startTime;
@@ -127,27 +130,16 @@ export function FrameCanvas() {
     }
 
     // --- Load frames ---
-    console.log("[FrameCanvas] Starting frame load...");
     loadFrames((state) => {
       stateRef.current.frames = state;
 
-      // Draw first frame as soon as it's available (immediate visual feedback)
-      if (!stateRef.current.firstFrameDrawn && state.frames[0]) {
-        stateRef.current.firstFrameDrawn = true;
-        console.log("[FrameCanvas] Drawing first frame");
-        drawFrame(0);
-      }
-
-      // Start intro once all intro frames are loaded
-      if (state.introLoaded && !stateRef.current.introStarted) {
-        console.log("[FrameCanvas] All intro frames loaded, starting playback");
+      // Start intro as soon as enough frames are preloaded (introReady)
+      // The rest will load during the 5s playback; drawFrame finds nearest available
+      if (state.introReady && !stateRef.current.introStarted) {
         playIntro();
       }
     }).then((state) => {
       stateRef.current.frames = state;
-      if (!stateRef.current.introStarted) {
-        playIntro();
-      }
     });
 
     // --- Event listeners ---

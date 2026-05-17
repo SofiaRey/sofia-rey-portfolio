@@ -15,9 +15,9 @@ import path from "node:path";
 
 const SOURCE_VIDEO = path.resolve("src/assets/video.mp4");
 const OUTPUT_DIR = path.resolve("public/frames");
-const TOTAL_FRAMES = 280;
+const TOTAL_FRAMES = 378;
 const VIDEO_DURATION = 27.033; // seconds (from ffprobe)
-const FPS = TOTAL_FRAMES / VIDEO_DURATION; // ~10.36 fps extraction rate
+const FPS = TOTAL_FRAMES / VIDEO_DURATION; // ~13.98 fps extraction rate
 
 const RESOLUTIONS = [
   { name: "desktop", width: 1920, height: 1080 },
