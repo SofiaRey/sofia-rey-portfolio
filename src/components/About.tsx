@@ -52,13 +52,13 @@ export function About() {
                   environment, both to work in teams and alone.
                 </p>
               </div>
-              <div>{/* empty right col */}</div>
+              <div className="hidden md:block">{/* empty right col */}</div>
             </div>
           </FadeIn>
 
           <FadeIn delay={150}>
             <div className="grid md:grid-cols-2 gap-8 md:gap-32">
-              <div>{/* empty left col */}</div>
+              <div className="hidden md:block">{/* empty left col */}</div>
               <div className="text-left">
                 <h3 className="font-serif text-2xl mb-4">curiosity</h3>
                 <p className="text-sm leading-relaxed">
@@ -79,7 +79,7 @@ export function About() {
                   rationality.
                 </p>
               </div>
-              <div>{/* empty right col */}</div>
+              <div className="hidden md:block">{/* empty right col */}</div>
             </div>
           </FadeIn>
         </div>
