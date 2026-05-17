@@ -31,19 +31,23 @@ export function Hero() {
       id="inicio"
       className="relative z-10 min-h-screen flex items-end justify-center px-6 pb-24"
     >
-      <h1 className="font-serif italic text-4xl md:text-6xl lg:text-7xl text-center">
-        <span>soy </span>
-        <span className="inline-block overflow-hidden align-bottom h-[1.2em] relative">
-          <span
-            className={`inline-block text-accent transition-transform duration-400 ease-in-out ${
-              isAnimating ? "-translate-y-full" : "translate-y-0"
-            }`}
-          >
-            {ROLES[currentIndex]}
-          </span>
-        </span>
-        <span>?</span>
-      </h1>
+      <div className="max-w-5xl mx-auto w-full">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-32">
+          <h1 className="font-serif text-3xl md:text-4xl text-right">
+            soy
+          </h1>
+          <div className="font-serif text-3xl md:text-4xl text-left overflow-hidden h-[1.2em] relative">
+            <span
+              className={`inline-block text-accent transition-transform duration-400 ease-in-out ${
+                isAnimating ? "-translate-y-full" : "translate-y-0"
+              }`}
+            >
+              {ROLES[currentIndex]}
+            </span>
+            <span className="text-accent">?</span>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

@@ -70,7 +70,7 @@ export function Nav() {
           {/* Wordmark */}
           <button
             onClick={() => handleNavClick("inicio")}
-            className="font-serif italic text-xl tracking-wide cursor-pointer border-none bg-transparent"
+            className="font-serif text-xl tracking-[0.3em] cursor-pointer border-none bg-transparent text-accent"
           >
             sofía
           </button>
@@ -83,7 +83,7 @@ export function Nav() {
                 onClick={() => handleNavClick(section.id)}
                 className={`text-xs tracking-widest cursor-pointer border-none bg-transparent transition-colors duration-200 ${
                   activeSection === section.id
-                    ? "text-accent"
+                    ? "text-accent font-bold"
                     : "text-foreground hover:text-accent"
                 }`}
               >
@@ -124,9 +124,9 @@ export function Nav() {
             <button
               key={section.id}
               onClick={() => handleNavClick(section.id)}
-              className={`font-serif italic text-2xl tracking-wide cursor-pointer border-none bg-transparent transition-colors duration-200 ${
+              className={`font-serif text-2xl tracking-wide cursor-pointer border-none bg-transparent transition-colors duration-200 ${
                 activeSection === section.id
-                  ? "text-accent"
+                  ? "text-accent font-bold"
                   : "text-foreground"
               }`}
             >

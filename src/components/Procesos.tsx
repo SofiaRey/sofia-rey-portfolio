@@ -35,8 +35,8 @@ const PROCESSES = [
   { id: 5, title: "Proceso 5" },
 ];
 
-const CIRCLE_RADIUS = 140; // px, radius of the orbit
-const CIRCLE_RADIUS_MOBILE = 100;
+const CIRCLE_RADIUS = 200;
+const CIRCLE_RADIUS_MOBILE = 140;
 
 export function Procesos() {
   const [paused, setPaused] = useState(false);
@@ -44,15 +44,21 @@ export function Procesos() {
   return (
     <section id="procesos" className="relative z-10 py-32 md:py-48 px-6">
       <div className="max-w-5xl mx-auto">
+        {/* Heading aligned to right column (like curiosity) */}
         <FadeIn>
-          <h2 className="font-serif italic text-3xl md:text-5xl text-center mb-20">
-            mis <span className="text-accent">procesos</span>
-          </h2>
+          <div className="grid md:grid-cols-2 gap-8 md:gap-32 mb-20">
+            <div>{/* empty left col */}</div>
+            <div className="text-left">
+              <h2 className="font-serif text-3xl md:text-5xl">
+                mis <span className="text-accent">procesos</span>
+              </h2>
+            </div>
+          </div>
         </FadeIn>
 
         <FadeIn delay={200}>
           <div
-            className="relative mx-auto w-[260px] h-[260px] md:w-[340px] md:h-[340px]"
+            className="relative mx-auto w-[360px] h-[360px] md:w-[480px] md:h-[480px]"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
@@ -69,7 +75,7 @@ export function Procesos() {
                   <a
                     key={process.id}
                     href="#"
-                    className="group absolute top-1/2 left-1/2 w-16 h-16 md:w-20 md:h-20 -ml-8 -mt-8 md:-ml-10 md:-mt-10 transition-transform duration-300 hover:scale-125"
+                    className="group absolute top-1/2 left-1/2 w-32 h-32 md:w-40 md:h-40 -ml-16 -mt-16 md:-ml-20 md:-mt-20 transition-transform duration-300 hover:scale-125"
                     style={{
                       transform: `rotate(${angle}deg) translateY(calc(-1 * var(--radius))) rotate(-${angle}deg)`,
                       ["--radius" as string]: `${CIRCLE_RADIUS_MOBILE}px`,

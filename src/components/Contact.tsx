@@ -20,9 +20,9 @@ export function Contact() {
   return (
     <section id="contacto" className="relative z-10 py-32 md:py-48 px-6">
       <div className="max-w-5xl mx-auto">
-        <div className="flex flex-col md:flex-row gap-12 md:gap-16">
-          {/* Form */}
-          <FadeIn className="md:w-1/2">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-32">
+          {/* Left col: form */}
+          <FadeIn>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <input
                 type="text"
@@ -61,19 +61,43 @@ export function Contact() {
             </form>
           </FadeIn>
 
-          {/* Text */}
-          <FadeIn className="md:w-1/2" delay={200}>
-            <div>
-              <h2 className="font-serif italic text-3xl md:text-4xl mb-6">
+          {/* Right col: text + social links (aligned like curiosity) */}
+          <FadeIn delay={200}>
+            <div className="text-left">
+              <h2 className="font-serif text-3xl md:text-4xl mb-6">
                 sigamos el <span className="text-accent">proceso</span>
               </h2>
-              <p className="text-sm leading-relaxed max-w-md">
+              <p className="text-sm leading-relaxed max-w-md mb-12">
                 Hoy quiero seguir construyendo proyectos donde diseño,
                 tecnología y propósito se encuentren. Me interesan las
                 experiencias accesibles, los productos digitales cuidados, la
                 educación, la divulgación y las herramientas que transforman
                 ideas complejas en experiencias claras y humanas.
               </p>
+              <div className="flex flex-col items-start gap-2 text-xs tracking-wide">
+                <span>
+                  linkedin:{" "}
+                  <a
+                    href="https://www.linkedin.com/in/sof%C3%ADa-rey-se/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-accent transition-colors underline"
+                  >
+                    Sofía Rey San Esteban
+                  </a>
+                </span>
+                <span>
+                  github:{" "}
+                  <a
+                    href="https://github.com/SofiaRey"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-accent transition-colors underline"
+                  >
+                    @SofiaRey
+                  </a>
+                </span>
+              </div>
             </div>
           </FadeIn>
         </div>
