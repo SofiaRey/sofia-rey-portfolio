@@ -5,30 +5,29 @@ export function About() {
   return (
     <section id="sobre-mi" className="relative z-10 py-32 md:py-48 px-6">
       <div className="max-w-5xl mx-auto">
-        {/* Portrait + Name — aligned left */}
+        {/* Portrait + Name (left) and Bio (right) — same row */}
         <FadeIn>
-          <div className="flex flex-col items-start gap-4 mb-16 md:max-w-sm">
-            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden">
-              <img
-                src={portrait}
-                alt="Sofía Rey"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 mb-32">
+            {/* Left: portrait, name, title */}
+            <div className="flex flex-col items-start gap-4 md:max-w-sm">
+              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden">
+                <img
+                  src={portrait}
+                  alt="Sofía Rey"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <h2 className="font-serif italic text-3xl md:text-4xl">
+                hola, soy sofía rey
+              </h2>
+              <p className="text-xs tracking-widest uppercase">
+                Diseñadora Multimedia
+              </p>
             </div>
-            <h2 className="font-serif italic text-3xl md:text-4xl">
-              hola, soy sofía rey
-            </h2>
-            <p className="text-xs tracking-widest uppercase">
-              Diseñadora Multimedia
-            </p>
-          </div>
-        </FadeIn>
 
-        {/* Bio paragraph — aligned right */}
-        <FadeIn delay={100}>
-          <div className="flex justify-end mb-32">
-            <p className="max-w-md text-sm leading-relaxed text-right md:text-left">
+            {/* Right: bio text */}
+            <p className="max-w-md text-sm leading-relaxed md:text-right md:pt-8">
               I am a multimedia design student passionate about learning new
               things. This is one of my most notable characteristics. My vocation
               for design arises from the need to integrate a wide range of

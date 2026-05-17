@@ -106,7 +106,7 @@ export function FrameCanvas() {
       stateRef.current.introStarted = true;
 
       const startTime = performance.now();
-      const introDuration = (INTRO_FRAMES / 30) * 1000; // 5 seconds at 30fps
+      const introDuration = 5000; // 5 seconds intro playback
 
       function animate(now: number) {
         const elapsed = now - startTime;

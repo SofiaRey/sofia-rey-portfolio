@@ -22,22 +22,22 @@ Single-page portfolio website for Sofía Rey (multimedia designer) with an Apple
 
 ### Playback Modes
 
-1. **Intro Playback (frames 0–149):** Auto-plays at 30fps on page load (~5 seconds). Scroll is ignored during this phase. Doubles as loading buffer for scroll frames.
-2. **Scroll-Driven Mode (frames 150–279):** After intro completes, frame index = `150 + (scrollY / maxScroll) * 130`. If user scrolled during intro, canvas jumps to correct frame on transition.
+1. **Intro Playback (frames 0–51):** Auto-plays over 5 seconds on page load. Scroll is ignored during this phase. Doubles as loading buffer for scroll frames.
+2. **Scroll-Driven Mode (frames 52–279):** After intro completes, frame index = `52 + (scrollY / maxScroll) * 228`. If user scrolled during intro, canvas jumps to correct frame on transition.
 
 ### Frame Loading Strategy
 
-- **Phase 1:** Preload all 150 intro frames eagerly (parallel Image() requests). Intro starts only when all are loaded.
-- **Phase 2:** Background-load 130 scroll frames during intro playback. If a scroll frame isn't loaded yet, show nearest available frame.
+- **Phase 1:** Preload all 52 intro frames eagerly (parallel Image() requests). Intro starts only when all are loaded.
+- **Phase 2:** Background-load 228 scroll frames during intro playback. If a scroll frame isn't loaded yet, show nearest available frame.
 
 ## Page Sections
 
 | # | Section | ID | Notes |
 |---|---------|-----|-------|
 | 1 | Nav | — | Fixed, transparent→blur on scroll, active section tracking |
-| 2 | Hero | `#inicio` | "soy ___?" with vertical-slide role rotation (3s interval) |
-| 3 | About | `#sobre-mi` | Portrait, bio, 3 traits (versatility, curiosity, consciousness) |
-| 4 | Procesos | `#procesos` | 5 SVG placeholders, pulse/bob animation, hover scale |
+| 2 | Hero | `#inicio` | "soy ___?" with vertical-slide role rotation (3s interval), aligned to bottom of viewport |
+| 3 | About | `#sobre-mi` | Portrait+name (left) and bio (right) in same row; traits in zigzag layout below |
+| 4 | Procesos | `#procesos` | 5 SVG items orbiting in a circle (20s rotation), pauses on hover |
 | 5 | Procesos Compartidos | — | 2x2 grid (desktop), auto-scroll carousel (mobile), 4 photos |
 | 6 | Contact | `#contacto` | Form UI → `mailto:` link on submit |
 | 7 | Footer | — | LinkedIn + GitHub links |
@@ -58,8 +58,8 @@ Single-page portfolio website for Sofía Rey (multimedia designer) with an Apple
 ## Animations
 
 - **Role rotation:** Vertical slide, 3s per word, infinite loop
-- **Noise overlay:** Animated canvas-generated grain, ~5% opacity, 100ms refresh
-- **Process items:** CSS pulse/bob (scale 0.98→1.02 + translateY), staggered delays, scale to 1.08 on hover
+- **Noise overlay:** Animated canvas-generated grain, ~4% opacity, 100ms refresh
+- **Process items:** Orbit in a circle (20s CSS rotation), counter-rotate to stay upright, scale to 1.25 on hover, circle pauses on hover
 - **Content reveals:** Fade-up (opacity 0→1, translateY 20px→0) via Intersection Observer, triggered once at 20% viewport entry
 - **Photo carousel (mobile):** CSS marquee animation, continuous loop, ~35s cycle
 
@@ -81,15 +81,15 @@ src/
 ├── App.tsx             — Root component (assembles all layers)
 ├── assets/
 │   ├── video.mp4       — Source video
-│   ├── portrait.jpg    — Sofía's photo
-│   └── photo1-4.jpg    — Procesos compartidos photos
+│   ├── sofia-portrait.png — Sofía's photo
+│   └── process-1–4.png — Procesos compartidos photos
 ├── components/
 │   ├── FrameCanvas.tsx — Fixed canvas + frame playback logic
 │   ├── NoiseOverlay.tsx— Animated grain overlay (modular)
 │   ├── Nav.tsx         — Fixed nav + mobile overlay menu
 │   ├── Hero.tsx        — Role rotation hero
-│   ├── About.tsx       — Bio + traits
-│   ├── Procesos.tsx    — 5 SVG process items
+│   ├── About.tsx       — Bio + traits (zigzag layout)
+│   ├── Procesos.tsx    — 5 SVG process items (circular orbit)
 │   ├── ProcesosCompartidos.tsx — Photo grid/carousel
 │   ├── Contact.tsx     — Form → mailto
 │   ├── Footer.tsx      — Social links

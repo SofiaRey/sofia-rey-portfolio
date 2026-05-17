@@ -4,7 +4,7 @@
  */
 
 const TOTAL_FRAMES = 280;
-const INTRO_FRAMES = 150;
+const INTRO_FRAMES = 52; // 5 seconds of source video at ~10.36fps extraction rate
 const FRAME_EXTENSION = "jpg";
 
 function getFrameDir(): string {

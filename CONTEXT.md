@@ -5,15 +5,15 @@ A creative portfolio website for Sofía Rey, multimedia designer. Single-page si
 ## Language
 
 **Frame Sequence**:
-A set of pre-extracted WebP images from a source video, rendered to a canvas element based on scroll position or timed playback.
+A set of pre-extracted JPEG images from a source video, rendered to a canvas element based on scroll position or timed playback.
 _Avoid_: Video, animation frames, sprites
 
 **Intro Playback**:
-The automatic playback of frames 0–149 at page load (first 5 seconds of the source video) before scroll-driven mode activates.
+The automatic playback of frames 0–51 at page load (first 5 seconds of the source video) before scroll-driven mode activates.
 _Avoid_: Auto-play video, opening animation
 
 **Scroll-Driven Mode**:
-The state after Intro Playback completes, where the current frame is determined by the user's scroll position mapped to frames 150–279.
+The state after Intro Playback completes, where the current frame is determined by the user's scroll position mapped to frames 52–279.
 _Avoid_: Scroll animation, parallax
 
 **Noise Overlay**:
@@ -21,7 +21,7 @@ An animated semi-transparent texture layer rendered above all content, providing
 _Avoid_: Grain filter, texture layer
 
 **Process Item**:
-One of five portfolio categories displayed as pulsing SVG illustrations that will link to project pages in the future.
+One of five portfolio categories displayed as SVG illustrations orbiting in a circle, linking to project pages in the future.
 _Avoid_: Project, portfolio piece, work item
 
 **Role Rotation**:
@@ -38,9 +38,9 @@ _Avoid_: Text carousel, typing effect
 ## Example dialogue
 
 > **Dev:** "When does the Frame Sequence switch from Intro Playback to Scroll-Driven Mode?"
-> **Domain expert:** "The intro always plays to completion (150 frames at 30fps = 5 seconds). Once it finishes, the canvas immediately shows whichever frame corresponds to the current scroll position."
+> **Domain expert:** "The intro always plays to completion (52 frames over 5 seconds). Once it finishes, the canvas immediately shows whichever frame corresponds to the current scroll position."
 
 ## Flagged ambiguities
 
 - "video" could mean the source MP4 or the canvas playback — resolved: the source file is the "source video"; what the user sees is the "Frame Sequence."
-- "animation" is overloaded (frame sequence, noise, process item pulse, role rotation, fade-up reveals) — resolved: each has its own specific term.
+- "animation" is overloaded (frame sequence, noise, process item orbit, role rotation, fade-up reveals) — resolved: each has its own specific term.
