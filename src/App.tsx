@@ -15,7 +15,7 @@ export function App() {
       <FrameCanvas />
 
       {/* Layer 2: Page content */}
-      <main className="relative z-10">
+      <main className="relative z-10 max-md:max-w-[80%]">
         <Nav />
         <Hero />
         <About />
@@ -25,7 +25,7 @@ export function App() {
       </main>
 
       {/* Layer 3: Noise overlay */}
-      <NoiseOverlay />
+      {/*<NoiseOverlay />*/}
     </>
   );
 }
