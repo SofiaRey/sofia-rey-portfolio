@@ -36,7 +36,6 @@ const PROCESSES = [
 ];
 
 const CIRCLE_RADIUS = 200;
-const CIRCLE_RADIUS_MOBILE = 140;
 
 export function Procesos() {
   const [paused, setPaused] = useState(false);
@@ -57,9 +56,21 @@ export function Procesos() {
           </div>
         </FadeIn>
 
+        {/* Mobile: vertical stack */}
+        <div className="md:hidden flex flex-col items-start gap-8">
+          {PROCESSES.map((process) => (
+            <FadeIn key={process.id}>
+              <a href="#" className="block w-24 h-24" aria-label={process.title}>
+                <ProcessSVG seed={process.id} />
+              </a>
+            </FadeIn>
+          ))}
+        </div>
+
+        {/* Desktop: rotating circle */}
         <FadeIn delay={200}>
           <div
-            className="relative mx-auto w-[360px] h-[360px] md:w-[480px] md:h-[480px]"
+            className="hidden md:block relative mx-auto w-[480px] h-[480px]"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
@@ -76,10 +87,9 @@ export function Procesos() {
                   <a
                     key={process.id}
                     href="#"
-                    className="group absolute top-1/2 left-1/2 w-32 h-32 md:w-40 md:h-40 -ml-16 -mt-16 md:-ml-20 md:-mt-20 transition-transform duration-300 hover:scale-125"
+                    className="group absolute top-1/2 left-1/2 w-40 h-40 -ml-20 -mt-20 transition-transform duration-300 hover:scale-125"
                     style={{
-                      transform: `rotate(${angle}deg) translateY(calc(-1 * var(--radius))) rotate(-${angle}deg)`,
-                      ["--radius" as string]: `${CIRCLE_RADIUS_MOBILE}px`,
+                      transform: `rotate(${angle}deg) translateY(-${CIRCLE_RADIUS}px) rotate(-${angle}deg)`,
                     }}
                     aria-label={process.title}
                   >
@@ -99,14 +109,6 @@ export function Procesos() {
           </div>
         </FadeIn>
       </div>
-
-      <style>{`
-        @media (min-width: 768px) {
-          .animate-spin-slow a {
-            --radius: ${CIRCLE_RADIUS}px;
-          }
-        }
-      `}</style>
     </section>
   );
 }
