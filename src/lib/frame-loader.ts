@@ -1,7 +1,8 @@
 /**
  * Frame loader utility.
- * Preloads a small batch of intro frames eagerly, then continues loading
- * the rest in the background while the intro animation plays.
+ * Loads frames in sequential batches to avoid overwhelming the network:
+ * 1. Intro frames (0-69) — all at once, signals introReady after first 30
+ * 2. Scroll frames in quarters — each quarter starts only after the previous completes
  */
 
 const TOTAL_FRAMES = 378;
@@ -30,10 +31,46 @@ export type FrameLoaderState = {
 type OnProgress = (state: FrameLoaderState) => void;
 
 /**
+ * Loads a batch of frames (from startIndex to endIndex-1) in parallel.
+ * Returns a promise that resolves when all frames in the batch are loaded.
+ */
+function loadBatch(
+  state: FrameLoaderState,
+  startIndex: number,
+  endIndex: number,
+  onProgress: OnProgress
+): Promise<void> {
+  return new Promise((resolve) => {
+    const batchSize = endIndex - startIndex;
+    let loaded = 0;
+
+    for (let i = startIndex; i < endIndex; i++) {
+      const img = new Image();
+      img.src = getFramePath(i);
+      img.onload = () => {
+        state.frames[i] = img;
+        state.loadedCount++;
+        loaded++;
+        if (loaded === batchSize) {
+          onProgress(state);
+          resolve();
+        }
+      };
+      img.onerror = () => {
+        loaded++;
+        if (loaded === batchSize) {
+          onProgress(state);
+          resolve();
+        }
+      };
+    }
+  });
+}
+
+/**
  * Loads all frames in phases:
- * 1. First INTRO_PRELOAD frames — once loaded, signals introReady so playback can start
- * 2. Remaining intro frames (INTRO_PRELOAD..149) — loaded concurrently during playback
- * 3. Scroll frames (150-279) — loaded after all intro frames are done
+ * 1. Intro frames (0-69) — loaded eagerly, signals introReady after first 30
+ * 2. Scroll frames in 4 quarters — each quarter waits for the previous to finish
  */
 export function loadFrames(onProgress: OnProgress): Promise<FrameLoaderState> {
   const state: FrameLoaderState = {
@@ -47,6 +84,7 @@ export function loadFrames(onProgress: OnProgress): Promise<FrameLoaderState> {
   return new Promise((resolve) => {
     let introLoadedCount = 0;
 
+    // Phase 1: Load all intro frames
     for (let i = 0; i < INTRO_FRAMES; i++) {
       const img = new Image();
       img.src = getFramePath(i);
@@ -65,11 +103,11 @@ export function loadFrames(onProgress: OnProgress): Promise<FrameLoaderState> {
           state.introLoaded = true;
           onProgress(state);
           resolve(state);
-          loadScrollFrames(state, onProgress);
+          // Phase 2: Load scroll frames in quarters
+          loadScrollInQuarters(state, onProgress);
         }
       };
       img.onerror = () => {
-        console.warn(`Failed to load frame ${i}: ${getFramePath(i)}`);
         introLoadedCount++;
 
         if (!state.introReady && introLoadedCount >= INTRO_PRELOAD) {
@@ -81,37 +119,30 @@ export function loadFrames(onProgress: OnProgress): Promise<FrameLoaderState> {
           state.introLoaded = true;
           onProgress(state);
           resolve(state);
-          loadScrollFrames(state, onProgress);
+          loadScrollInQuarters(state, onProgress);
         }
       };
     }
   });
 }
 
-function loadScrollFrames(state: FrameLoaderState, onProgress: OnProgress) {
-  let scrollLoadedCount = 0;
-  const scrollFrameCount = TOTAL_FRAMES - INTRO_FRAMES;
+/**
+ * Loads scroll frames (INTRO_FRAMES to TOTAL_FRAMES) in 4 sequential quarters.
+ * Each quarter only starts after the previous one finishes.
+ */
+async function loadScrollInQuarters(state: FrameLoaderState, onProgress: OnProgress) {
+  const scrollStart = INTRO_FRAMES;
+  const scrollCount = TOTAL_FRAMES - INTRO_FRAMES;
+  const quarterSize = Math.ceil(scrollCount / 4);
 
-  for (let i = INTRO_FRAMES; i < TOTAL_FRAMES; i++) {
-    const img = new Image();
-    img.src = getFramePath(i);
-    img.onload = () => {
-      state.frames[i] = img;
-      state.loadedCount++;
-      scrollLoadedCount++;
-      if (scrollLoadedCount === scrollFrameCount) {
-        state.allLoaded = true;
-        onProgress(state);
-      }
-    };
-    img.onerror = () => {
-      scrollLoadedCount++;
-      if (scrollLoadedCount === scrollFrameCount) {
-        state.allLoaded = true;
-        onProgress(state);
-      }
-    };
+  for (let q = 0; q < 4; q++) {
+    const start = scrollStart + q * quarterSize;
+    const end = Math.min(start + quarterSize, TOTAL_FRAMES);
+    await loadBatch(state, start, end, onProgress);
   }
+
+  state.allLoaded = true;
+  onProgress(state);
 }
 
 export { TOTAL_FRAMES, INTRO_FRAMES };
