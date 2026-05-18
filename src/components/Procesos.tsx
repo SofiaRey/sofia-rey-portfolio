@@ -2,11 +2,11 @@ import { FadeIn } from "./FadeIn";
 import { useState } from "react";
 
 const PROCESSES = [
-  { id: 1, title: "Process 1", src: "/videos/process-1.apng" },
-  { id: 2, title: "Process 2", src: "/videos/process-2.apng" },
-  { id: 3, title: "Process 3", src: "/videos/process-3.apng" },
-  { id: 4, title: "Process 4", src: "/videos/process-4.apng" },
-  { id: 5, title: "Process 5", src: "/videos/process-5.apng" },
+  { id: 1, title: "Process 1", src: "/videos/process-1.webp" },
+  { id: 2, title: "Process 2", src: "/videos/process-2.webp" },
+  { id: 3, title: "Process 3", src: "/videos/process-3.webp" },
+  { id: 4, title: "Process 4", src: "/videos/process-4.webp" },
+  { id: 5, title: "Process 5", src: "/videos/process-5.webp" },
 ];
 
 const CIRCLE_RADIUS = 200;

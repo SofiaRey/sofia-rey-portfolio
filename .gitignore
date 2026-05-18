@@ -40,8 +40,9 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 src/assets/video.*
 public/png-frames
 
-# Source files for the process orbs (the .gif derivatives are what's served)
+# Source files for the process orbs (the .webp derivatives are what's served)
 public/videos/*.mov
 public/videos/*.apng
 public/videos/*.webm
+public/videos/*.gif
 

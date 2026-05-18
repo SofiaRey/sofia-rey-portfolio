@@ -31,15 +31,15 @@ if (existsSync(framesSrc)) {
   console.log(" copied public/frames → dist/frames");
 }
 
-// Only ship the .gif process orbs — source .mov / .apng are local-only
+// Ship only the animated .webp orbs — source .mov / .apng / .gif are local-only
 const videosSrc = path.join(process.cwd(), "public/videos");
 if (existsSync(videosSrc)) {
   const videosDest = path.join(outdir, "videos");
   await mkdir(videosDest, { recursive: true });
-  for await (const file of new Bun.Glob("*.gif").scan({ cwd: videosSrc })) {
+  for await (const file of new Bun.Glob("process-*.webp").scan({ cwd: videosSrc })) {
     await cp(path.join(videosSrc, file), path.join(videosDest, file));
   }
-  console.log(" copied public/videos/*.gif → dist/videos");
+  console.log(" copied public/videos/*.webp → dist/videos");
 }
 
 for (const f of ["favicon.png", "favicon-dark.png"]) {
