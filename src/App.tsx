@@ -7,6 +7,7 @@ import { About } from "./components/About";
 import { Procesos } from "./components/Procesos";
 import { ProcesosCompartidos } from "./components/ProcesosCompartidos";
 import { Contact } from "./components/Contact";
+import { Footer } from "./components/Footer";
 
 export function App() {
   return (
@@ -23,9 +24,10 @@ export function App() {
         <ProcesosCompartidos />
         <Contact />
       </main>
+      <Footer />
 
       {/* Layer 3: Noise overlay */}
-      {/*<NoiseOverlay />*/}
+      <NoiseOverlay />
     </>
   );
 }

@@ -33,3 +33,15 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 # Finder (MacOS) folder config
 .DS_Store
 
+# Editors
+.vscode
+
+# Source media used only locally for extraction — not served at runtime
+src/assets/video.*
+public/png-frames
+
+# Source files for the process orbs (the .gif derivatives are what's served)
+public/videos/*.mov
+public/videos/*.apng
+public/videos/*.webm
+

@@ -8,6 +8,7 @@
   --color-background: #ffffff;
   --color-foreground: #000000;
   --animate-marquee: marquee 35s linear infinite;
+  --animate-wave: wave 35s linear infinite;
   --animate-pulse-bob: pulse-bob 3.5s ease-in-out infinite;
   --animate-spin-slow: spin-slow 20s linear infinite;
   --animate-spin-slow-reverse: spin-slow-reverse 20s linear infinite;
@@ -22,14 +23,15 @@
 
   html {
     scroll-behavior: smooth;
-    background: #ffffff;
+    background: #000000;
+    color-scheme: light;
   }
 
   body {
     font-family: var(--font-sans);
     color: var(--color-foreground);
     overflow-x: hidden;
-    background: transparent;
+    background: #ffffff;
   }
 
   #root {
@@ -43,6 +45,15 @@
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes wave {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: -100vw;
   }
 }
 

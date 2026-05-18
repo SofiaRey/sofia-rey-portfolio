@@ -1,25 +1,27 @@
+import waveSvg from "@/assets/footer.svg";
+
 export function Footer() {
   return (
-    <footer className="relative z-10 py-12 px-6 text-center">
-      <div className="max-w-5xl mx-auto flex flex-col items-center gap-4">
-        <div className="flex items-center gap-6 text-xs tracking-wide">
-          <a
-            href="https://www.linkedin.com/in/sofia-rey-san-esteban"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-accent transition-colors"
-          >
-            LinkedIn: Sofía Rey San Esteban
-          </a>
-          <a
-            href="https://github.com/dSofiaRey"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-accent transition-colors"
-          >
-            github: @dSofiaRey
-          </a>
-        </div>
+    <footer className="relative z-10">
+      <div
+        className="relative animate-wave"
+        style={{
+          height: "max(70px, calc(100vw * 98 / 1919))",
+          backgroundImage: `url(${waveSvg})`,
+          backgroundSize: "100vw 100%",
+          backgroundRepeat: "repeat-x",
+          display: "flex",
+          alignItems: "flex-end"
+        }}
+      >
+        <div style={{
+          backgroundColor: "#000000",
+          width: "100%",
+          height: "40%",
+          }}></div>
+        <p className="absolute bottom-2 left-0 right-0 text-center text-xs tracking-[0.25em] uppercase text-white">
+          THE PROCESS CONTINUES...
+        </p>
       </div>
     </footer>
   );

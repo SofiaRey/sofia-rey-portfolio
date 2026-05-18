@@ -1,8 +1,13 @@
+import { useState } from "react";
 import { FadeIn } from "./FadeIn";
+import { Lightbox } from "./Lightbox";
 import portrait from "@/assets/sofia-portrait.png";
 
 export function About() {
+  const [expanded, setExpanded] = useState(false);
+
   return (
+    <>
     <section id="sobre-mi" className="relative z-10 py-32 md:py-48 px-6">
       <div className="max-w-5xl mx-auto">
         {/* Portrait + Name (left col, right-aligned on desktop) and Bio (right col) */}
@@ -10,19 +15,24 @@ export function About() {
           <div className="grid md:grid-cols-2 gap-8 md:gap-32 mb-32">
             {/* Left col: portrait, name, title — left on mobile, right on desktop */}
             <div className="flex flex-col items-start md:items-end gap-4 text-left md:text-right">
-              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden">
+              <button
+                type="button"
+                onClick={() => setExpanded(true)}
+                aria-label="Expand portrait"
+                className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border border-black p-0 bg-transparent"
+              >
                 <img
                   src={portrait}
                   alt="Sofía Rey"
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
-              </div>
+              </button>
               <h2 className="font-serif text-3xl md:text-4xl">
-                hola, soy <span className="text-accent">sofía rey</span>
+                hi, i'm <span className="text-accent">sofía rey</span>
               </h2>
-              <p className="text-xs tracking-widest uppercase">
-                Diseñadora Multimedia
+              <p className="text-xs tracking-[0.25em] uppercase">
+                Multimedia Designer
               </p>
             </div>
 
@@ -85,5 +95,14 @@ export function About() {
         </div>
       </div>
     </section>
+    {expanded && (
+      <Lightbox
+        src={portrait}
+        alt="Sofía Rey"
+        rounded
+        onClose={() => setExpanded(false)}
+      />
+    )}
+    </>
   );
 }

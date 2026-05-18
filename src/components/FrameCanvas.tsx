@@ -12,13 +12,11 @@ export function FrameCanvas() {
     introComplete: boolean;
     introStarted: boolean;
     animFrame: number;
-    firstFrameDrawn: boolean;
   }>({
     frames: null,
     introComplete: false,
     introStarted: false,
     animFrame: 0,
-    firstFrameDrawn: false,
   });
 
   useEffect(() => {
@@ -40,31 +38,30 @@ export function FrameCanvas() {
 
     resize();
 
-    // --- Draw a frame to the canvas ---
+    // --- Draw a single frame, clearing the canvas first ---
     function drawFrame(frameIndex: number) {
       const state = stateRef.current.frames;
       if (!canvas || !ctx || !state) return;
 
-      // Clamp frame index
       frameIndex = Math.max(0, Math.min(frameIndex, TOTAL_FRAMES - 1));
 
-      // Find the nearest available frame
+      // Find the nearest loaded frame, biased toward earlier indices so
+      // scrolling up never shows a "future" frame while later ones load first.
       let frame = state.frames[frameIndex];
       if (!frame) {
-        for (let offset = 1; offset < 30; offset++) {
-          if (frameIndex - offset >= 0) {
-            frame = state.frames[frameIndex - offset];
-            if (frame) break;
-          }
-          if (frameIndex + offset < TOTAL_FRAMES) {
-            frame = state.frames[frameIndex + offset];
-            if (frame) break;
+        for (let i = frameIndex - 1; i >= 0; i--) {
+          if (state.frames[i]) { frame = state.frames[i]; break; }
+        }
+        if (!frame) {
+          for (let i = frameIndex + 1; i < TOTAL_FRAMES; i++) {
+            if (state.frames[i]) { frame = state.frames[i]; break; }
           }
         }
       }
       if (!frame) return;
 
-      // Draw frame covering the full canvas (object-fit: cover)
+      // Fill the canvas (object-fit: cover). When the frame is wider than the
+      // canvas, crop from the right edge so the left side stays visible.
       const canvasAspect = canvas.width / canvas.height;
       const frameAspect = frame.naturalWidth / frame.naturalHeight;
 
@@ -72,12 +69,15 @@ export function FrameCanvas() {
 
       if (frameAspect > canvasAspect) {
         sw = frame.naturalHeight * canvasAspect;
-        sx = (frame.naturalWidth - sw) / 2;
+        // Shift the crop window left by a small amount so the scribble's
+        // left edge isn't flush against the canvas edge on narrow viewports.
+        sx = Math.max(0, (frame.naturalWidth - sw) / 2 - frame.naturalWidth * 0.04);
       } else {
         sh = frame.naturalWidth / canvasAspect;
         sy = (frame.naturalHeight - sh) / 2;
       }
 
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(frame, sx, sy, sw, sh, 0, 0, canvas.width, canvas.height);
     }
 
@@ -101,8 +101,6 @@ export function FrameCanvas() {
     }
 
     // --- Intro auto-play ---
-    // Starts as soon as the first frame is available. Runs for a full 5 seconds.
-    // drawFrame handles missing frames by finding the nearest loaded one.
     const introDuration = 5000;
 
     function playIntro() {
@@ -133,23 +131,33 @@ export function FrameCanvas() {
     loadFrames((state) => {
       stateRef.current.frames = state;
 
-      // Start intro as soon as enough frames are preloaded (introReady)
-      // The rest will load during the 5s playback; drawFrame finds nearest available
       if (state.introReady && !stateRef.current.introStarted) {
-        playIntro();
+        // Mid-scroll reload: skip the intro
+        if (window.scrollY > 0) {
+          stateRef.current.introStarted = true;
+          stateRef.current.introComplete = true;
+          updateScrollFrame();
+        } else {
+          playIntro();
+        }
+      } else if (stateRef.current.introComplete) {
+        // More frames loaded — refresh current target so canvas catches up
+        updateScrollFrame();
       }
     }).then((state) => {
       stateRef.current.frames = state;
+      if (stateRef.current.introComplete) updateScrollFrame();
     });
 
     // --- Event listeners ---
     function handleResize() {
+      if (!canvas || !ctx) return;
+      const dpr = window.devicePixelRatio || 1;
+      const newWidth = window.innerWidth * dpr;
+      const newHeight = window.innerHeight * dpr;
+      if (canvas.width === newWidth && canvas.height === newHeight) return;
       resize();
-      if (stateRef.current.introComplete) {
-        updateScrollFrame();
-      } else if (stateRef.current.firstFrameDrawn) {
-        drawFrame(0);
-      }
+      if (stateRef.current.introComplete) updateScrollFrame();
     }
 
     function handleScroll() {
@@ -169,13 +177,11 @@ export function FrameCanvas() {
   }, []);
 
   return (
-    <>
-      <canvas
-        ref={canvasRef}
-        className="fixed top-0 left-0 md:left-0 w-screen h-screen max-md:left-[30%] max-md:w-[70vw]"
-        style={{ zIndex: 0 }}
-        aria-hidden="true"
-      />
-    </>
+    <canvas
+      ref={canvasRef}
+      className="fixed top-0 left-0 w-screen h-screen max-md:left-[30%] max-md:w-[70vw]"
+      style={{ zIndex: 0 }}
+      aria-hidden="true"
+    />
   );
 }

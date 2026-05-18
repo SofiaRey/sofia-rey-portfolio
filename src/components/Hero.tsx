@@ -1,26 +1,31 @@
 import { useState, useEffect } from "react";
 
 const ROLES = [
-  "diseñadora",
-  "video editor",
-  "photographer",
-  "ux designer",
-  "graphic designer",
+  "developer?",
+  "ux designer?",
+  "video editor?",
+  "community manager?",
+  "photographer?",
+  "professor?",
+  "entrepreneur?",
+  "speaker?",
+  "multimedia designer?",
 ];
 
-const INTERVAL = 3000; // 3 seconds per word
+const INTERVAL = 1800;
+const FADE_DURATION = 250;
 
 export function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setIsAnimating(true);
+      setIsVisible(false);
       setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1) % ROLES.length);
-        setIsAnimating(false);
-      }, 400); // transition duration
+        setIsVisible(true);
+      }, FADE_DURATION);
     }, INTERVAL);
 
     return () => clearInterval(timer);
@@ -34,17 +39,17 @@ export function Hero() {
       <div className="max-w-5xl mx-auto w-full">
         <div className="grid md:grid-cols-2 gap-2 md:gap-32">
           <h1 className="font-serif text-3xl md:text-4xl text-left md:text-right">
-            soy
+            am i a
           </h1>
-          <div className="font-serif text-3xl md:text-4xl text-left overflow-hidden h-[1.2em] relative">
+          <div className="font-serif text-3xl md:text-4xl text-left h-[1.2em]">
             <span
-              className={`inline-block text-accent transition-transform duration-400 ease-in-out ${
-                isAnimating ? "-translate-y-full" : "translate-y-0"
+              className={`inline-block text-accent transition-opacity ease-in-out ${
+                isVisible ? "opacity-100" : "opacity-0"
               }`}
+              style={{ transitionDuration: `${FADE_DURATION}ms` }}
             >
               {ROLES[currentIndex]}
             </span>
-            <span className="text-accent">?</span>
           </div>
         </div>
       </div>

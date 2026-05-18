@@ -5,8 +5,8 @@
  * 2. Scroll frames in quarters — each quarter starts only after the previous completes
  */
 
-const TOTAL_FRAMES = 378;
-const INTRO_FRAMES = 70; // ~5 seconds of video at 13.98fps, played back over 5s (1:1 speed)
+const TOTAL_FRAMES = 862;
+const INTRO_FRAMES = 160; // ~first 18% of the animation, played over the 5s intro
 const INTRO_PRELOAD = 30; // preload this many before starting intro (rest loads during playback)
 const FRAME_EXTENSION = "webp";
 

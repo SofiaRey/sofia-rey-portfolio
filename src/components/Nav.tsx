@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 
 const SECTIONS = [
-  { id: "inicio", label: "INICIO" },
-  { id: "sobre-mi", label: "SOBRE MÍ" },
-  { id: "procesos", label: "PROCESOS" },
-  { id: "contacto", label: "CONTACTO" },
+  { id: "inicio", label: "HOME" },
+  { id: "sobre-mi", label: "ABOUT" },
+  { id: "procesos", label: "PROCESSES" },
+  { id: "contacto", label: "CONTACT" },
 ];
 
 export function Nav() {
@@ -62,11 +62,22 @@ export function Nav() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-white/85 backdrop-blur-md"
+            ? "bg-white/40 backdrop-blur-md border-b border-black"
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        {scrolled && (
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              opacity: 0.12,
+              backgroundImage:
+                "url(\"data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+            }}
+          />
+        )}
+        <div className="relative max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Wordmark */}
           <button
             onClick={() => handleNavClick("inicio")}
@@ -81,7 +92,7 @@ export function Nav() {
               <button
                 key={section.id}
                 onClick={() => handleNavClick(section.id)}
-                className={`text-xs tracking-widest cursor-pointer border-none bg-transparent transition-colors duration-200 ${
+                className={`text-xs tracking-[0.25em] cursor-pointer border-none bg-transparent transition-colors duration-200 ${
                   activeSection === section.id
                     ? "text-accent font-bold"
                     : "text-foreground hover:text-accent"
@@ -96,7 +107,7 @@ export function Nav() {
           <button
             className="md:hidden flex flex-col gap-1.5 cursor-pointer border-none bg-transparent p-2"
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
           >
             <span

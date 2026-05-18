@@ -1,56 +1,40 @@
 import { FadeIn } from "./FadeIn";
 import { useState } from "react";
 
-/**
- * Abstract organic SVG shape for process items.
- * Each gets a unique seed for slight variation.
- */
-function ProcessSVG({ seed }: { seed: number }) {
-  const paths = [
-    "M50,25 C60,10 80,15 85,30 C90,45 80,60 65,65 C50,70 35,65 25,55 C15,45 20,30 30,20 C40,10 55,15 60,25 C65,35 55,50 45,55 C35,60 25,50 30,40 C35,30 45,25 50,30",
-    "M45,20 C65,15 80,25 82,40 C84,55 70,70 55,72 C40,74 25,65 20,50 C15,35 25,20 40,18 C55,16 70,30 68,45 C66,60 50,68 40,62 C30,56 28,42 35,35",
-    "M55,22 C70,18 85,30 83,45 C81,60 68,72 52,70 C36,68 22,58 24,42 C26,26 42,18 55,22 M40,35 C48,30 58,32 60,40 C62,48 55,55 47,53 C39,51 35,43 40,35",
-    "M48,18 C68,14 88,28 85,48 C82,68 62,80 42,75 C22,70 12,52 18,35 C24,18 44,12 58,20 C72,28 75,48 65,58 C55,68 38,65 32,52 C26,39 35,28 48,25",
-    "M52,20 C72,16 90,32 86,52 C82,72 64,82 44,78 C24,74 14,56 20,38 C26,20 46,14 62,22 C78,30 82,50 72,62 C62,74 42,72 34,58 C26,44 36,30 50,26",
-  ];
-
-  return (
-    <svg
-      viewBox="0 0 100 90"
-      className="w-full h-full"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="0.8"
-    >
-      <path d={paths[seed % paths.length]} />
-    </svg>
-  );
-}
-
 const PROCESSES = [
-  { id: 1, title: "Proceso 1" },
-  { id: 2, title: "Proceso 2" },
-  { id: 3, title: "Proceso 3" },
-  { id: 4, title: "Proceso 4" },
-  { id: 5, title: "Proceso 5" },
+  { id: 1, title: "Process 1", src: "/videos/process-1.apng" },
+  { id: 2, title: "Process 2", src: "/videos/process-2.apng" },
+  { id: 3, title: "Process 3", src: "/videos/process-3.apng" },
+  { id: 4, title: "Process 4", src: "/videos/process-4.apng" },
+  { id: 5, title: "Process 5", src: "/videos/process-5.apng" },
 ];
 
 const CIRCLE_RADIUS = 200;
 
+function ProcessVideo({ src, title }: { src: string; title: string }) {
+  return (
+    <img
+      src={src}
+      alt={title}
+      className="w-full h-full object-cover"
+    />
+  );
+}
+
 export function Procesos() {
   const [paused, setPaused] = useState(false);
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   return (
     <section id="procesos" className="relative z-10 py-16 md:py-48 px-6">
       <div className="max-w-5xl mx-auto">
-        {/* Heading aligned to right column (like curiosity) */}
         <FadeIn>
           <div className="grid md:grid-cols-2 gap-8 md:gap-32 mb-20">
             <div>{/* empty left col */}</div>
             <div className="text-left">
               <h2 className="font-serif text-3xl md:text-5xl">
-                mis<br className="md:hidden" />
-                {" "}<span className="text-accent">procesos</span>
+                my<br className="md:hidden" />
+                {" "}<span className="text-accent">processes</span>
               </h2>
             </div>
           </div>
@@ -61,7 +45,7 @@ export function Procesos() {
           {PROCESSES.map((process) => (
             <FadeIn key={process.id}>
               <a href="#" className="block w-24 h-24" aria-label={process.title}>
-                <ProcessSVG seed={process.id} />
+                <ProcessVideo src={process.src} title={process.title} />
               </a>
             </FadeIn>
           ))}
@@ -74,7 +58,6 @@ export function Procesos() {
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            {/* Rotating container */}
             <div
               className="absolute inset-0 animate-spin-slow"
               style={{
@@ -83,24 +66,28 @@ export function Procesos() {
             >
               {PROCESSES.map((process, i) => {
                 const angle = (360 / PROCESSES.length) * i;
+                const scale = hoveredId === process.id ? 1.25 : 1;
                 return (
                   <a
                     key={process.id}
                     href="#"
-                    className="group absolute top-1/2 left-1/2 w-40 h-40 -ml-20 -mt-20 transition-transform duration-300 hover:scale-125"
+                    onMouseEnter={() => setHoveredId(process.id)}
+                    onMouseLeave={() => setHoveredId(null)}
+                    className="group absolute top-1/2 left-1/2 w-40 h-40 -ml-20 -mt-20"
                     style={{
-                      transform: `rotate(${angle}deg) translateY(-${CIRCLE_RADIUS}px) rotate(-${angle}deg)`,
+                      transform: `rotate(${angle}deg) translateY(-${CIRCLE_RADIUS}px) rotate(-${angle}deg) scale(${scale})`,
+                      transition: "transform 300ms",
                     }}
                     aria-label={process.title}
                   >
-                    {/* Counter-rotate to keep SVGs upright */}
+                    {/* Counter-rotate to keep videos upright */}
                     <div
                       className="w-full h-full animate-spin-slow-reverse"
                       style={{
                         animationPlayState: paused ? "paused" : "running",
                       }}
                     >
-                      <ProcessSVG seed={process.id} />
+                      <ProcessVideo src={process.src} title={process.title} />
                     </div>
                   </a>
                 );

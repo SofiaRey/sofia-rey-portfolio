@@ -9,6 +9,20 @@ import { createRoot } from "react-dom/client";
 import { Agentation } from "agentation";
 import { App } from "./App";
 
+// Inject favicons at runtime so Bun's HTML bundler doesn't try to resolve them
+// (they're served by the dev/prod server at /favicon*.png, not bundled).
+for (const [href, scheme] of [
+  ["/favicon.png", "light"],
+  ["/favicon-dark.png", "dark"],
+] as const) {
+  const link = document.createElement("link");
+  link.rel = "icon";
+  link.type = "image/png";
+  link.href = href;
+  link.media = `(prefers-color-scheme: ${scheme})`;
+  document.head.appendChild(link);
+}
+
 const elem = document.getElementById("root")!;
 const app = (
   <>

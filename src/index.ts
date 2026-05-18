@@ -13,14 +13,21 @@ const server = serve({
     const url = new URL(req.url);
 
     // Serve static files from public/
-    if (url.pathname.startsWith("/frames/")) {
+    if (
+      url.pathname.startsWith("/frames/") ||
+      url.pathname.startsWith("/videos/") ||
+      url.pathname === "/favicon.png" ||
+      url.pathname === "/favicon-dark.png"
+    ) {
       const filePath = path.join(publicDir, url.pathname);
       const f = file(filePath);
       if (await f.exists()) {
+        const cacheControl =
+          process.env.NODE_ENV === "production"
+            ? "public, max-age=31536000, immutable"
+            : "no-cache";
         return new Response(f, {
-          headers: {
-            "Cache-Control": "public, max-age=31536000, immutable",
-          },
+          headers: { "Cache-Control": cacheControl },
         });
       }
       return new Response("Not found", { status: 404 });

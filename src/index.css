@@ -4,6 +4,23 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
   }
+
+  body {
+    cursor: url("./assets/cursor.png") 20 21, auto;
+  }
+
+  a, button, [role="button"], label, summary, select {
+    cursor: url("./assets/cursor-hover.png") 17 18, pointer;
+  }
+
+  body:active,
+  a:active, button:active, [role="button"]:active, label:active, summary:active, select:active {
+    cursor: url("./assets/cursor-active.png") 14 15, default;
+  }
+
+  input, textarea {
+    cursor: text;
+  }
 }
 
 @media (prefers-reduced-motion) {

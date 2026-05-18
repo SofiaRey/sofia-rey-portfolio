@@ -11,7 +11,7 @@ export function Contact() {
     const subject = formData.get("subject") as string;
     const message = formData.get("message") as string;
 
-    const body = `Nombre: ${name}\nEmail: ${email}\n\n${message}`;
+    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
     const mailto = `mailto:sofia@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     window.location.href = mailto;
@@ -21,19 +21,19 @@ export function Contact() {
     <section id="contacto" className="relative z-10 py-32 md:py-48 px-6">
       <div className="max-w-5xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 md:gap-32">
-          {/* Left col on desktop: text + social links — shown first on mobile via order */}
-          <FadeIn>
-            <div className="text-left order-1 md:order-2">
+          {/* Right col on desktop: text + social links — shown first on mobile via order */}
+          <FadeIn className="order-1 md:order-2">
+            <div className="text-left">
               <h2 className="font-serif text-3xl md:text-4xl mb-6">
-                sigamos el<br className="md:hidden" />
-                {" "}<span className="text-accent">proceso</span>
+                let's continue the<br className="md:hidden" />
+                {" "}<span className="text-accent">process</span>
               </h2>
               <p className="text-sm leading-relaxed max-w-md mb-12">
-                Hoy quiero seguir construyendo proyectos donde diseño,
-                tecnología y propósito se encuentren. Me interesan las
-                experiencias accesibles, los productos digitales cuidados, la
-                educación, la divulgación y las herramientas que transforman
-                ideas complejas en experiencias claras y humanas.
+                Today I want to keep building projects where design,
+                technology, and purpose meet. I'm drawn to accessible
+                experiences, well-crafted digital products, education,
+                outreach, and tools that turn complex ideas into clear,
+                human experiences.
               </p>
               <div className="flex flex-col items-start gap-2 text-xs tracking-wide">
                 <span>
@@ -62,33 +62,33 @@ export function Contact() {
             </div>
           </FadeIn>
 
-          {/* Right col on desktop: form — shown second on mobile via order */}
-          <FadeIn delay={200}>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4 order-2 md:order-1">
+          {/* Left col on desktop: form — shown second on mobile via order */}
+          <FadeIn delay={200} className="order-2 md:order-1">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <input
                 type="text"
                 name="name"
-                placeholder="TU NOMBRE"
+                placeholder="YOUR NAME"
                 required
                 className="border border-foreground/20 px-4 py-3 text-sm bg-transparent placeholder:text-foreground/40 focus:outline-none focus:border-foreground transition-colors"
               />
               <input
                 type="email"
                 name="email"
-                placeholder="TU EMAIL"
+                placeholder="YOUR EMAIL"
                 required
                 className="border border-foreground/20 px-4 py-3 text-sm bg-transparent placeholder:text-foreground/40 focus:outline-none focus:border-foreground transition-colors"
               />
               <input
                 type="text"
                 name="subject"
-                placeholder="MOTIVO"
+                placeholder="SUBJECT"
                 required
                 className="border border-foreground/20 px-4 py-3 text-sm bg-transparent placeholder:text-foreground/40 focus:outline-none focus:border-foreground transition-colors"
               />
               <textarea
                 name="message"
-                placeholder="CONTAME MÁS..."
+                placeholder="TELL ME MORE..."
                 rows={4}
                 required
                 className="border border-foreground/20 px-4 py-3 text-sm bg-transparent placeholder:text-foreground/40 focus:outline-none focus:border-foreground transition-colors resize-none"
@@ -97,7 +97,7 @@ export function Contact() {
                 type="submit"
                 className="self-end border border-accent text-accent px-6 py-2 text-sm tracking-widest hover:bg-accent hover:text-white transition-colors duration-200 cursor-pointer"
               >
-                ENVIAR
+                SEND
               </button>
             </form>
           </FadeIn>
