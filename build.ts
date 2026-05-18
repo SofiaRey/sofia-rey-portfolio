@@ -1,5 +1,5 @@
 import tailwind from "bun-plugin-tailwind";
-import { rm, cp } from "node:fs/promises";
+import { rm, cp, mkdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 
@@ -24,10 +24,28 @@ for (const output of result.outputs) {
   console.log(` ${path.relative(process.cwd(), output.path)}  ${(output.size / 1024).toFixed(1)} KB`);
 }
 
-// Copy public/frames to dist/frames for static deployment
-const framesDir = path.join(process.cwd(), "public/frames");
-if (existsSync(framesDir)) {
-  const destFrames = path.join(outdir, "frames");
-  await cp(framesDir, destFrames, { recursive: true });
-  console.log(`\n Copied frames to dist/frames`);
+// Copy public/ assets needed at runtime into dist/.
+const framesSrc = path.join(process.cwd(), "public/frames");
+if (existsSync(framesSrc)) {
+  await cp(framesSrc, path.join(outdir, "frames"), { recursive: true });
+  console.log(" copied public/frames → dist/frames");
+}
+
+// Only ship the .gif process orbs — source .mov / .apng are local-only
+const videosSrc = path.join(process.cwd(), "public/videos");
+if (existsSync(videosSrc)) {
+  const videosDest = path.join(outdir, "videos");
+  await mkdir(videosDest, { recursive: true });
+  for await (const file of new Bun.Glob("*.gif").scan({ cwd: videosSrc })) {
+    await cp(path.join(videosSrc, file), path.join(videosDest, file));
+  }
+  console.log(" copied public/videos/*.gif → dist/videos");
+}
+
+for (const f of ["favicon.png", "favicon-dark.png"]) {
+  const src = path.join(process.cwd(), "public", f);
+  if (existsSync(src)) {
+    await cp(src, path.join(outdir, f));
+    console.log(` copied public/${f} → dist/${f}`);
+  }
 }

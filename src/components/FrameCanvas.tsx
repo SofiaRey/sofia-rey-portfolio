@@ -69,9 +69,11 @@ export function FrameCanvas() {
 
       if (frameAspect > canvasAspect) {
         sw = frame.naturalHeight * canvasAspect;
-        // Shift the crop window left by a small amount so the scribble's
-        // left edge isn't flush against the canvas edge on narrow viewports.
-        sx = Math.max(0, (frame.naturalWidth - sw) / 2 - frame.naturalWidth * 0.04);
+        // Mobile (below Tailwind md breakpoint): shift crop slightly left so
+        // the scribble's left edge isn't clipped. Desktop: keep centered.
+        const isMobile = window.innerWidth < 768;
+        const offset = isMobile ? frame.naturalWidth * 0.08 : 0;
+        sx = Math.max(0, (frame.naturalWidth - sw) / 2 - offset);
       } else {
         sh = frame.naturalWidth / canvasAspect;
         sy = (frame.naturalHeight - sh) / 2;
@@ -179,7 +181,7 @@ export function FrameCanvas() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-screen h-screen max-md:left-[30%] max-md:w-[70vw]"
+      className="fixed top-0 left-0 w-screen h-screen max-md:left-[10%] max-md:w-[70vw]"
       style={{ zIndex: 0 }}
       aria-hidden="true"
     />
