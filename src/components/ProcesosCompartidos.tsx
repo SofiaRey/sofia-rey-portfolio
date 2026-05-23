@@ -4,11 +4,7 @@ import photo2 from "@/assets/process-2.png";
 import photo3 from "@/assets/process-3.png";
 import { useT } from "../lib/i18n";
 
-const PHOTOS = [
-  { src: photo1, alt: "Shared process 1" },
-  { src: photo2, alt: "Shared process 2" },
-  { src: photo3, alt: "Shared process 3" },
-];
+const PHOTOS = [photo1, photo2, photo3];
 
 export function ProcesosCompartidos() {
   const t = useT();
@@ -36,8 +32,8 @@ export function ProcesosCompartidos() {
             <div className="hidden md:grid grid-cols-[2fr_3fr] grid-rows-2 gap-4">
               <div className="group row-span-2 overflow-hidden border border-black">
                 <img
-                  src={PHOTOS[0]!.src}
-                  alt={PHOTOS[0]!.alt}
+                  src={PHOTOS[0]!}
+                  alt={`${t("shared.photo")} 1`}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
                 />
@@ -48,8 +44,8 @@ export function ProcesosCompartidos() {
                   className="group aspect-square overflow-hidden border border-black"
                 >
                   <img
-                    src={photo.src}
-                    alt={photo.alt}
+                    src={photo}
+                    alt={`${t("shared.photo")} ${i + 2}`}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     loading="lazy"
                   />
@@ -68,8 +64,8 @@ export function ProcesosCompartidos() {
                 className="group w-64 h-64 shrink-0 overflow-hidden border border-black"
               >
                 <img
-                  src={photo.src}
-                  alt={photo.alt}
+                  src={photo}
+                  alt={`${t("shared.photo")} ${(i % PHOTOS.length) + 1}`}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
                 />

@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import { useT } from "../lib/i18n";
 
 type Props = {
   src?: string;
 };
 
 export function MusicButton({ src = "/audio/landing.mp3" }: Props) {
+  const t = useT();
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
 
@@ -43,7 +45,7 @@ export function MusicButton({ src = "/audio/landing.mp3" }: Props) {
       <button
         type="button"
         onClick={toggle}
-        aria-label={playing ? "Pause music" : "Play music"}
+        aria-label={playing ? t("music.pause") : t("music.play")}
         aria-pressed={playing}
         className="fixed bottom-4 right-4 z-50 w-12 h-12 border border-black bg-paper hover:bg-black hover:text-paper transition-colors flex items-center justify-center shadow-sm"
       >

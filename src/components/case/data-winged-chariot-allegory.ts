@@ -6,8 +6,8 @@ export const WINGED_CHARIOT_CASE: CaseData = {
   slug: "winged-chariot-allegory",
   name: "The Winged Chariot",
   tagline: {
-    en: "A motion piece translating Plato’s allegory into a visual language of digital collage, vectors and symbolic contrast.",
-    es: "Una pieza de motion que traduce la alegoría de Platón a un lenguaje visual de collage digital, vectores y contraste simbólico.",
+    en: "A motion piece translating Plato’s allegory into a visual language of digital collage, vectors and symbolic imagery.",
+    es: "Una pieza de motion que traduce la alegoría de Platón a un lenguaje visual de collage digital, vectores e imaginería simbólica.",
   },
   cover: {
     kind: "placeholder",
@@ -18,8 +18,8 @@ export const WINGED_CHARIOT_CASE: CaseData = {
     tone: "dark",
     src: wcCover,
     alt: {
-      en: "The Winged Chariot — collage composition still",
-      es: "El carro alado — still de composición en collage",
+      en: "The Winged Chariot - collage composition still",
+      es: "El carro alado - still de composición en collage",
     },
   },
   meta: {
@@ -35,12 +35,12 @@ export const WINGED_CHARIOT_CASE: CaseData = {
     team: ["Sofía Rey", "Franco González"],
     tools: ["After Effects", "Figma", "Adobe Illustrator"],
     tags: [
-      { en: "motion design",          es: "motion design" },
-      { en: "digital collage",        es: "collage digital" },
-      { en: "philosophy",             es: "filosofía" },
-      { en: "visual metaphor",        es: "metáfora visual" },
+      { en: "motion design", es: "motion design" },
+      { en: "digital collage", es: "collage digital" },
+      { en: "philosophy", es: "filosofía" },
+      { en: "visual metaphor", es: "metáfora visual" },
       { en: "audiovisual storytelling", es: "narrativa audiovisual" },
-      { en: "collaboration",          es: "colaboración" },
+      { en: "collaboration", es: "colaboración" },
     ],
     links: [
       {
@@ -53,7 +53,7 @@ export const WINGED_CHARIOT_CASE: CaseData = {
   intro: {
     context: {
       en: "This project was developed for Gráfica para Cine y TV as an audiovisual interpretation of Plato’s allegory of the winged chariot. It was created in collaboration with a philosophy student, who wrote the script and narrated the piece.",
-      es: "Este proyecto se desarrolló para Gráfica para Cine y TV como una interpretación audiovisual de la alegoría del carro alado de Platón. Se creó en colaboración con un estudiante de filosofía, que escribió el guion y narró la pieza.",
+      es: "Este proyecto se desarrolló para Gráfica para Cine y TV como una interpretación audiovisual de la alegoría del carro alado de Platón. Fue creado en colaboración con un estudiante de filosofía, que escribió el guion y narró la pieza.",
     },
     problem: {
       en: "The main challenge was translating abstract philosophical ideas into visual metaphors that could support the explanation without oversimplifying the concept.",
@@ -61,7 +61,7 @@ export const WINGED_CHARIOT_CASE: CaseData = {
     },
     goal: {
       en: "Create a visually distinctive motion piece that made the allegory more engaging and understandable through symbolic imagery, rhythm and contrast.",
-      es: "Crear una pieza de motion visualmente distintiva que hiciera la alegoría más atractiva y comprensible a través de la imaginería simbólica, el ritmo y el contraste.",
+      es: "Crear una pieza de motion visualmente distintiva que hiciera la alegoría más atractiva y comprensible a través de imaginería simbólica, ritmo y contraste.",
     },
     role: {
       en: "I was responsible for the full visual side of the project: moodboard, aesthetic direction, visual metaphors, composition, graphic assets and motion design.",
@@ -103,7 +103,7 @@ export const WINGED_CHARIOT_CASE: CaseData = {
       },
       paragraphs: [
         {
-          en: "This project started from a collaboration with a different discipline. My collaborator, a philosophy student, wrote the script and narrated the video, while I focused on building the visual world around it.",
+          en: "This project started from a collaboration with another discipline. My collaborator, a philosophy student, wrote the script and narrated the video, while I focused on building the visual world around it.",
           es: "Este proyecto partió de una colaboración con otra disciplina. Mi compañero, estudiante de filosofía, escribió el guion y narró el video, mientras yo me concentré en construir el mundo visual a su alrededor.",
         },
         {
@@ -112,7 +112,7 @@ export const WINGED_CHARIOT_CASE: CaseData = {
         },
         {
           en: "That process pushed me to think differently about motion graphics. The visuals were not only decorative: they had to become a bridge between philosophical language and the viewer’s understanding.",
-          es: "Ese proceso me obligó a pensar de otra forma el motion graphics. Lo visual no era solo decorativo: tenía que volverse un puente entre el lenguaje filosófico y la comprensión de quien mira.",
+          es: "Ese proceso me obligó a pensar el motion graphics de otra manera. Lo visual no era solo decorativo: tenía que volverse un puente entre el lenguaje filosófico y la comprensión de la audiencia.",
         },
       ],
     },
@@ -135,8 +135,8 @@ export const WINGED_CHARIOT_CASE: CaseData = {
             es: "Lo antiguo se encuentra con lo digital",
           },
           body: {
-            en: "Most of the imagery was treated in black and white, creating a connection with the ancient origin of the allegory while placing it inside a contemporary digital composition.",
-            es: "La mayor parte de las imágenes se trabajó en blanco y negro, generando una conexión con el origen antiguo de la alegoría y a la vez situándola dentro de una composición digital contemporánea.",
+            en: "Most of the imagery was treated in black and white, connecting the classical origin of the allegory with a contemporary digital composition.",
+            es: "La mayor parte de las imágenes se trabajó en blanco y negro, conectando el origen clásico de la alegoría con una composición digital contemporánea.",
           },
         },
         {
@@ -163,13 +163,13 @@ export const WINGED_CHARIOT_CASE: CaseData = {
         tone: "dark",
         src: wc1,
         alt: {
-          en: "The Winged Chariot — composition with collage and vector mix",
-          es: "El carro alado — composición con mezcla de collage y vector",
+          en: "The Winged Chariot - composition with collage and vector mix",
+          es: "El carro alado - composición con mezcla de collage y vector",
         },
       },
       caption: {
-        en: "The contrast between ancient imagery and digital graphics became one of the core visual devices.",
-        es: "El contraste entre la imaginería antigua y la gráfica digital se volvió uno de los recursos visuales centrales.",
+        en: "The contrast between classical imagery and digital graphics became one of the core visual devices.",
+        es: "El contraste entre la imaginería clásica y la gráfica digital se volvió uno de los recursos visuales centrales.",
       },
     },
     {
@@ -211,7 +211,7 @@ export const WINGED_CHARIOT_CASE: CaseData = {
           title: { en: "Graphic composition", es: "Composición gráfica" },
           body: {
             en: "I designed the visual scenes by combining cutout imagery, flat colour fields, geometric shapes and vector elements.",
-            es: "Diseñé las escenas visuales combinando imágenes recortadas, planos de color plano, formas geométricas y elementos vectoriales.",
+            es: "Diseñé las escenas visuales combinando imágenes recortadas, planos de color pleno, formas geométricas y elementos vectoriales.",
           },
         },
         {
@@ -219,7 +219,7 @@ export const WINGED_CHARIOT_CASE: CaseData = {
           title: { en: "Motion design", es: "Motion design" },
           body: {
             en: "I animated the compositions to follow the rhythm of the narration, using movement to clarify relationships between ideas and keep the piece visually engaging.",
-            es: "Animé las composiciones para seguir el ritmo de la narración, usando el movimiento para aclarar las relaciones entre ideas y mantener la pieza visualmente atractiva.",
+            es: "Animé las composiciones siguiendo el ritmo de la narración, usando el movimiento para aclarar relaciones entre ideas y mantener la pieza visualmente atrapante.",
           },
         },
       ],
@@ -231,8 +231,8 @@ export const WINGED_CHARIOT_CASE: CaseData = {
         es: "Un estilo fuera de mi zona de confort",
       },
       body: {
-        en: "I wanted this project to look very different from the work I had done before. The collage approach allowed me to create something more experimental, expressive and conceptually charged. The mix of old imagery and digital vector language helped the video feel connected to the philosophical origin of the text while still being visually contemporary.",
-        es: "Quería que este proyecto se viera muy distinto del trabajo que había hecho antes. El enfoque de collage me permitió crear algo más experimental, expresivo y cargado conceptualmente. La mezcla de imaginería antigua con lenguaje vectorial digital ayudó a que el video se sintiera conectado al origen filosófico del texto sin dejar de ser visualmente contemporáneo.",
+        en: "I wanted this project to look very different from the work I had done before. The collage approach allowed me to create something more experimental, expressive and conceptually charged. Combining classical imagery with a digital vector language helped the video stay connected to the philosophical origin of the text while still feeling visually contemporary.",
+        es: "Quería que este proyecto se viera muy distinto de lo que había hecho antes. El enfoque de collage me permitió crear algo más experimental, expresivo y cargado conceptualmente. La mezcla de imaginería clásica con lenguaje vectorial digital ayudó a que el video se mantuviera conectado al origen filosófico del texto sin dejar de sentirse visualmente contemporáneo.",
       },
     },
   ],

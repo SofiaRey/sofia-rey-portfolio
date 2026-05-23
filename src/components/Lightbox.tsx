@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useT } from "../lib/i18n";
 
 interface Props {
   src: string;
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export function Lightbox({ src, alt, onClose, rounded = false }: Props) {
+  const t = useT();
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -28,7 +30,7 @@ export function Lightbox({ src, alt, onClose, rounded = false }: Props) {
     <div
       role="dialog"
       aria-modal="true"
-      aria-label="Expanded image"
+      aria-label={t("lightbox.expanded")}
       onClick={onClose}
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-6 animate-in fade-in duration-200"
     >
@@ -46,7 +48,7 @@ export function Lightbox({ src, alt, onClose, rounded = false }: Props) {
         <button
           type="button"
           onClick={onClose}
-          aria-label="Close"
+          aria-label={t("lightbox.close")}
           className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center border border-black bg-paper hover:bg-black hover:text-paper transition-colors"
         >
           <span aria-hidden="true" className="text-lg leading-none">

@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { FadeIn } from "../components/FadeIn";
 import { useT, useLoc } from "../lib/i18n";
 import { LangToggle } from "../components/LangToggle";
-import { ARATHE_CASE } from "../components/case/data";
+import { ARATHE_CASE } from "../components/case/data-arathe";
 import { PORTFOLIO_VIDEO_CASE } from "../components/case/data-portfolio-video";
 import { ORGANIGRAM_REBRAND_CASE } from "../components/case/data-organigram-rebrand";
 import { VALORANT_CHAMPIONS_CASE } from "../components/case/data-valorant-champions";
@@ -30,10 +30,9 @@ function pickCase(): CaseData {
   return (slug ? CASES[slug] : undefined) ?? ARATHE_CASE;
 }
 
-const D = pickCase();
-
 function CaseNav() {
   const t = useT();
+  const D = pickCase();
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/40 backdrop-blur-md border-b border-black">
       <div
@@ -113,6 +112,7 @@ function MetaCell({
 function CaseHero() {
   const t = useT();
   const loc = useLoc();
+  const D = pickCase();
   return (
     <header id="hero" className="relative pt-32 md:pt-44 pb-16 md:pb-24 px-6">
       <div className="max-w-5xl mx-auto">
@@ -242,6 +242,7 @@ function CaseHero() {
 function ProcessIntro() {
   const t = useT();
   const loc = useLoc();
+  const D = pickCase();
   const items = [
     { n: "01", label: t("case.intro.context"), text: loc(D.intro.context) },
     { n: "02", label: t("case.intro.problem"), text: loc(D.intro.problem) },
@@ -326,6 +327,7 @@ function NeighbourCard({
 }
 
 function CaseFooterNav() {
+  const D = pickCase();
   return (
     <section
       id="next"
@@ -374,6 +376,7 @@ function CaseFooter() {
 }
 
 export function CaseStudy() {
+  const D = pickCase();
   useEffect(() => {
     document.body.classList.add("case-grain");
     document.body.style.backgroundColor = "#fdfcf9";

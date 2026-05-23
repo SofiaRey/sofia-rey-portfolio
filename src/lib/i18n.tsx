@@ -27,23 +27,23 @@ const DICT = {
   "about.greet":      { en: "hi, i'm",            es: "hola, soy" },
   "about.title":      { en: "Multimedia Designer", es: "Diseñadora Multimedia" },
   "about.bio": {
-    en: "I am a multimedia design student passionate about learning new things. This is one of my most notable characteristics. My vocation for design arises from the need to integrate a wide range of personal interests, including computer science, music, language studies and sports. This discipline allows me to mix and match my different interests, enhancing the final result of my work.",
-    es: "Soy estudiante de diseño multimedia, apasionada por aprender cosas nuevas. Esa es una de mis características más notorias. Mi vocación por el diseño nace de la necesidad de integrar intereses muy distintos: informática, música, idiomas y deporte. Esta disciplina me permite mezclar y combinar todos esos intereses, potenciando el resultado final de mi trabajo.",
+    en: "I am a deeply curious person, driven by the need to learn, explore and connect ideas that may seem distant at first. For a long time, my interests seemed to move in different directions: technology, music, languages, sport, movement, teaching and design. Today, I understand that this range does not make me scattered. It shapes the way I see.",
+    es: "Soy una persona profundamente curiosa, movida por la necesidad de aprender, explorar y conectar ideas que a simple vista parecen distantes. Durante mucho tiempo mis intereses parecían ir en direcciones distintas: tecnología, música, idiomas, deporte, movimiento, docencia y diseño. Hoy entiendo que esa amplitud no me dispersa, sino que construye mi manera de mirar.",
   },
   "about.t1.h": { en: "versatility",   es: "versatilidad" },
   "about.t1.p": {
-    en: "It allows me to adapt my skills to the needs of the environment, both to work in teams and alone.",
-    es: "Me permite adaptar mis habilidades a las necesidades del entorno, tanto para trabajar en equipo como en solitario.",
+    en: "It allows me to move across disciplines, tools and ways of working, adapting to each project and team.",
+    es: "Me permite moverme entre disciplinas, herramientas y formas de trabajo, adaptándome a cada proyecto y equipo.",
   },
   "about.t2.h": { en: "curiosity",     es: "curiosidad" },
   "about.t2.p": {
-    en: "I am a curious person, eager to learn and experiment with new tools as part of my constant development.",
-    es: "Soy una persona curiosa, con ganas de aprender y experimentar con nuevas herramientas como parte de mi desarrollo constante.",
+    en: "It drives me to learn, experiment and find new ways of thinking and creating.",
+    es: "Es el motor que me impulsa a aprender, experimentar y encontrar nuevas formas de pensar y crear.",
   },
-  "about.t3.h": { en: "consciousness", es: "conciencia" },
+  "about.t3.h": { en: "judgement", es: "criterio" },
   "about.t3.p": {
-    en: "Understanding the logic behind each step is fundamental to design. Design is the perfect blend of intuition and rationality.",
-    es: "Entender la lógica detrás de cada paso es fundamental para el diseño. El diseño es la combinación perfecta entre intuición y racionalidad.",
+    en: "It helps me design with intention, balancing intuition, logic and sensitivity in every decision.",
+    es: "Me ayuda a diseñar con intención, equilibrando intuición, lógica y sensibilidad en cada decisión.",
   },
 
   // Procesos
@@ -54,16 +54,16 @@ const DICT = {
   "shared.title":      { en: "shared",    es: "procesos" },
   "shared.processes":  { en: "processes", es: "compartidos" },
   "shared.body": {
-    en: "Along the way I also learned to value what is shared: working in teams, crossing perspectives, and building with others. I believe design grows when it opens up to exchange, when different ways of thinking meet and turn an initial idea into something more meaningful.",
-    es: "En el camino aprendí también a valorar lo compartido: trabajar en equipo, cruzar perspectivas y construir con otras personas. Creo que el diseño crece cuando se abre al intercambio, cuando distintas formas de pensar se encuentran y convierten una idea inicial en algo con más sentido.",
+    en: "Along the way, I also learned to value what is shared: working in teams, crossing perspectives and passing on what I learn. I believe design grows when it opens itself to exchange, when different ways of thinking meet and knowledge begins to circulate.",
+    es: "En el camino también aprendí a valorar lo compartido: trabajar en equipo, cruzar perspectivas y transmitir lo que aprendo. Creo que el diseño crece cuando se abre al intercambio, cuando distintas formas de pensar se encuentran y el conocimiento circula.",
   },
 
   // Contact
   "contact.title":       { en: "let's continue the", es: "sigamos el" },
   "contact.titleAccent": { en: "process",            es: "proceso" },
   "contact.body": {
-    en: "Today I want to keep building projects where design, technology, and purpose meet. I'm drawn to accessible experiences, well-crafted digital products, education, outreach, and tools that turn complex ideas into clear, human experiences.",
-    es: "Hoy quiero seguir construyendo proyectos donde se encuentren diseño, tecnología y propósito. Me atraen las experiencias accesibles, los productos digitales bien hechos, la educación, la divulgación y las herramientas que convierten ideas complejas en experiencias claras y humanas.",
+    en: "Today, I want to keep building at the intersection of design, technology and purpose. I am drawn to projects that make knowledge more accessible, expand participation and turn complex ideas into clear, human and meaningful experiences.",
+    es: "Hoy quiero seguir construyendo en el cruce entre diseño, tecnología y propósito. Me atraen los proyectos que acercan conocimiento, amplían el acceso y transforman ideas complejas en experiencias claras, humanas y significativas.",
   },
   "contact.placeholderName":    { en: "YOUR NAME",      es: "TU NOMBRE" },
   "contact.placeholderEmail":   { en: "YOUR EMAIL",     es: "TU EMAIL" },
@@ -136,13 +136,34 @@ const DICT = {
     en: "This process does not have to end here.",
     es: "Este proceso no tiene por qué acabar aquí.",
   },
-  "girl.p7": {
-    en: "I read every message — try me.",
-    es: "Leo todos los mensajes, escríbeme.",
-  },
 
   // Lang toggle aria
   "lang.toggle": { en: "Switch to Spanish", es: "Cambiar a inglés" },
+
+  // Loader
+  "loader.phrase": {
+    en: "the process is taking shape…",
+    es: "el proceso está tomando forma…",
+  },
+
+  // Music button
+  "music.play":  { en: "Play music",  es: "Reproducir música" },
+  "music.pause": { en: "Pause music", es: "Pausar música" },
+
+  // Lightbox
+  "lightbox.expanded": { en: "Expanded image", es: "Imagen ampliada" },
+  "lightbox.close":    { en: "Close",          es: "Cerrar" },
+
+  // Girl assistant
+  "girl.open":      { en: "Open contact form",  es: "Abrir formulario de contacto" },
+  "girl.dialog":    { en: "Contact form",       es: "Formulario de contacto" },
+  "girl.close":     { en: "Close contact form", es: "Cerrar formulario de contacto" },
+
+  // Video block fallback title
+  "video.fallback": { en: "YouTube video", es: "Video de YouTube" },
+
+  // Shared processes images
+  "shared.photo": { en: "Shared process", es: "Proceso compartido" },
 } as const;
 
 export type TKey = keyof typeof DICT;

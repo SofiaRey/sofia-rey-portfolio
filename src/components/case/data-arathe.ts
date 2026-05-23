@@ -18,13 +18,14 @@ import img14 from "@/assets/cases/arathe/14.webp";
 import img15 from "@/assets/cases/arathe/15.webp";
 import img16 from "@/assets/cases/arathe/16.webp";
 import img17 from "@/assets/cases/arathe/17.webp";
+import img18 from "@/assets/cases/arathe/rive.png";
 
 export const ARATHE_CASE: CaseData = {
   slug: "arathe",
   name: "Arathe",
   tagline: {
-    en: "A multisensory astronomy experience designed to make the sky accessible through touch, sound and vibration.",
-    es: "Una experiencia astronómica multisensorial diseñada para hacer el cielo accesible a través del tacto, el sonido y la vibración.",
+    en: "A multisensory astronomy experience that makes the sky accessible through touch, sound and vibration.",
+    es: "Una experiencia astronómica multisensorial que vuelve el cielo accesible a través del tacto, el sonido y la vibración.",
   },
   logo: {
     src: aratheLogo,
@@ -86,20 +87,20 @@ export const ARATHE_CASE: CaseData = {
   },
   intro: {
     context: {
-      en: "Arathe began as my final degree project in Multimedia Design at Universidad ORT, in collaboration with the Planetarium of Montevideo. The project emerged from a shared interest in making astronomy more accessible to blind and low-vision visitors.",
-      es: "Arathe nació como mi proyecto final de carrera en Diseño Multimedia en la Universidad ORT, en colaboración con el Planetario de Montevideo. El proyecto surgió de un interés compartido por hacer la astronomía más accesible para visitantes ciegos y con baja visión.",
+      en: "Arathe began as my final degree project in Multimedia Design at Universidad ORT, in collaboration with the Planetarium of Montevideo. It emerged from a shared interest in making astronomy more accessible to blind and low-vision visitors.",
+      es: "Arathe nació como mi proyecto final de carrera en Diseño Multimedia en la Universidad ORT, en colaboración con el Planetario de Montevideo. Surgió de un interés compartido por hacer la astronomía más accesible para personas ciegas y con baja visión.",
     },
     problem: {
-      en: "Astronomy is usually communicated through images, projections and visual references. The challenge was to design an experience where sight was no longer the centre, and where touch, sound, vibration and spatial orientation could become the main ways of understanding the sky.",
-      es: "La astronomía suele comunicarse a través de imágenes, proyecciones y referencias visuales. El desafío fue diseñar una experiencia en la que la vista dejara de ser el centro y donde el tacto, el sonido, la vibración y la orientación espacial pasaran a ser las formas principales de entender el cielo.",
+      en: "Astronomy is usually communicated through images, projections and visual references. The challenge was to design an experience where sight was no longer the centre, and where touch, sound, vibration and spatial orientation became the main ways of understanding the sky.",
+      es: "La astronomía suele comunicarse a través de imágenes, proyecciones y referencias visuales. El desafío fue diseñar una experiencia donde la vista dejara de ser el centro, y donde el tacto, el sonido, la vibración y la orientación espacial se convirtieran en las principales formas de entender el cielo.",
     },
     goal: {
-      en: "Create an interactive, multisensory astronomy experience centred on blind and low-vision audiences, while also expanding the Planetarium’s cultural and educational offer for all visitors.",
-      es: "Crear una experiencia astronómica interactiva y multisensorial centrada en públicos ciegos y con baja visión, ampliando a la vez la oferta cultural y educativa del Planetario para todos los visitantes.",
+      en: "Create an interactive, multisensory astronomy experience for blind and low-vision audiences, while expanding the Planetarium’s cultural and educational offer for all visitors.",
+      es: "Crear una experiencia astronómica interactiva y multisensorial para públicos ciegos y con baja visión, ampliando a la vez la propuesta cultural y educativa del Planetario para todas las personas visitantes.",
     },
     role: {
       en: "I led the interactive technology of the tactile dome, developed the Raspberry Pi and Python system, documented the electronics, contributed to the accessible audio narratives and built the first interactive blog article using Framer and Rive.",
-      es: "Lideré la tecnología interactiva de la cúpula táctil, desarrollé el sistema sobre Raspberry Pi y Python, documenté la electrónica, colaboré en las narrativas sonoras accesibles y construí el primer artículo de blog interactivo con Framer y Rive.",
+      es: "Lideré la tecnología interactiva del domo táctil, desarrollé el sistema con Raspberry Pi y Python, documenté la electrónica, colaboré en las narrativas sonoras accesibles y construí el primer artículo del blog interactivo con Framer y Rive.",
     },
   },
   body: [
@@ -126,9 +127,9 @@ export const ARATHE_CASE: CaseData = {
       kind: "highlight",
       text: {
         en: "Arathe is not about adapting astronomy after the fact. It is about designing an astronomical experience from other senses from the very beginning.",
-        es: "Arathe no se trata de adaptar la astronomía después. Se trata de diseñar una experiencia astronómica desde otros sentidos desde el inicio.",
+        es: "Arathe no se trata de adaptar la astronomía después, sino de diseñar una experiencia astronómica desde otros sentidos desde el principio.",
       },
-    },
+    },    
     {
       kind: "fullimage",
       image: {
@@ -154,17 +155,20 @@ export const ARATHE_CASE: CaseData = {
       paragraphs: [
         {
           en: "Arathe is a multisensory astronomy experience that invites people to explore constellations through touch, sound, vibration and storytelling. The project moves astronomy beyond the purely visual and asks what it means to design for people who experience the world through different senses.",
-          es: "Arathe es una experiencia astronómica multisensorial que invita a explorar las constelaciones a través del tacto, el sonido, la vibración y el relato. El proyecto lleva la astronomía más allá de lo puramente visual y se pregunta qué significa diseñar para personas que experimentan el mundo desde otros sentidos.",
+          es: "Arathe es una experiencia astronómica multisensorial que invita a explorar constelaciones a través del tacto, el sonido, la vibración y el relato. El proyecto lleva la astronomía más allá de lo visual y se pregunta qué significa diseñar para personas que experimentan el mundo desde otros sentidos.",
         },
         {
-          en: "The core piece is an interactive tactile dome. A visitor sits inside the structure, explores constellations in relief with their hands and receives audio and haptic feedback when touching different regions of the sky. Although the experience was designed primarily for blind and low-vision visitors, it also invites sighted audiences to close their eyes and discover the sky differently.",
-          es: "La pieza central es una cúpula táctil interactiva. La persona se sienta dentro de la estructura, explora con las manos las constelaciones en relieve y recibe respuesta sonora y háptica al tocar distintas regiones del cielo. Aunque la experiencia se diseñó principalmente para visitantes ciegos y con baja visión, también invita a quienes ven a cerrar los ojos y descubrir el cielo de otra forma.",
+          en: "At the centre of the project is an interactive tactile dome. A visitor sits inside the structure, explores constellations in relief with their hands and receives audio and haptic feedback when touching different regions of the sky. Although it was designed primarily for blind and low-vision visitors, it also invites sighted audiences to close their eyes and discover the sky differently.",
+          es: "En el centro del proyecto hay un domo táctil interactivo. La persona visitante se sienta dentro de la estructura, recorre constelaciones en relieve con las manos y recibe respuestas sonoras y hápticas al tocar distintas zonas del cielo. Aunque fue diseñado principalmente para personas ciegas y con baja visión, también invita a públicos videntes a cerrar los ojos y descubrir el cielo de otra manera.",
         },
       ],
     },
     {
       kind: "decisions",
-      title: { en: "Key design decisions", es: "Decisiones de diseño clave" },
+      title: {
+        en: "Key design decisions",
+        es: "Decisiones clave de diseño",
+      },
       items: [
         {
           n: "01",
@@ -174,18 +178,18 @@ export const ARATHE_CASE: CaseData = {
           },
           body: {
             en: "Accessibility was treated as the starting point of the experience, not as an adaptation added later. Touch, sound, vibration and spatial orientation became the main design materials.",
-            es: "La accesibilidad fue el punto de partida de la experiencia, no una adaptación añadida después. El tacto, el sonido, la vibración y la orientación espacial se volvieron los principales materiales de diseño.",
+            es: "La accesibilidad se abordó como punto de partida de la experiencia, no como una adaptación posterior. El tacto, el sonido, la vibración y la orientación espacial se convirtieron en los principales materiales de diseño.",
           },
         },
         {
           n: "02",
           title: {
             en: "Keeping the interaction simple",
-            es: "Mantener la interacción simple",
+            es: "Mantener simple la interacción",
           },
           body: {
             en: "The technology behind the dome is complex, but the visitor experience had to remain intuitive: sit inside, touch a constellation, listen, feel and continue exploring.",
-            es: "La tecnología detrás de la cúpula es compleja, pero la experiencia del visitante debía mantenerse intuitiva: sentarse dentro, tocar una constelación, escuchar, sentir y seguir explorando.",
+            es: "La tecnología detrás del domo es compleja, pero la experiencia debía sentirse intuitiva: sentarse, tocar una constelación, escuchar, sentir y seguir explorando.",
           },
         },
         {
@@ -196,7 +200,7 @@ export const ARATHE_CASE: CaseData = {
           },
           body: {
             en: "The system was documented and structured so future teams could update audio content, understand the electronics and maintain the installation without depending on the original developers.",
-            es: "El sistema se documentó y estructuró para que futuros equipos pudieran actualizar el contenido sonoro, entender la electrónica y mantener la instalación sin depender de quienes la desarrollamos originalmente.",
+            es: "El sistema fue documentado y estructurado para que futuros equipos puedan actualizar los audios, entender la electrónica y mantener la instalación sin depender del equipo desarrollador original.",
           },
         },
       ],
@@ -218,8 +222,8 @@ export const ARATHE_CASE: CaseData = {
         tone: "bone",
         src: img2,
         alt: {
-          en: "Electronic components displayed on the dome",
-          es: "Componentes electrónicos dispuestos en la cúpula",
+           en: "The system connects tactile exploration with audio and haptic feedback.",
+    es: "El sistema conecta la exploración táctil con respuestas sonoras y hápticas.",
         },
       },
       caption: {
@@ -317,7 +321,7 @@ export const ARATHE_CASE: CaseData = {
       kind: "highlight",
       text: {
         en: "Learning should not depend on a single sense. Sometimes listening is not an alternative - it is an advantage.",
-        es: "Aprender no debería depender de un solo sentido. A veces escuchar no es una alternativa: es una ventaja.",
+        es: "Aprender no debería depender de un solo sentido. A veces, escuchar no es una alternativa: es una ventaja.",
       },
     },
     {
@@ -341,30 +345,30 @@ export const ARATHE_CASE: CaseData = {
       kind: "longtext",
       title: {
         en: "Writing for touch and listening",
-        es: "Escribir para el tacto y la escucha",
+        es: "Escribir para tocar y escuchar",
       },
       paragraphs: [
         {
-          en: "The audio layer was not just an explanation added to the dome. It was part of the interaction itself. Each constellation needed a script that could guide a person through tactile exploration while also introducing astronomical and mythological context.",
-          es: "La capa sonora no fue una explicación añadida a la cúpula. Era parte de la interacción en sí. Cada constelación necesitaba un guion que acompañara la exploración táctil y, al mismo tiempo, introdujera contexto astronómico y mitológico.",
+          en: "The audio layer was not just an explanation added to the dome. It was part of the interaction itself. Each constellation needed a script that could guide tactile exploration while also introducing astronomical and mythological context.",
+          es: "La capa sonora no fue una explicación agregada al domo. Era parte de la interacción misma. Cada constelación necesitaba un guion capaz de guiar la exploración táctil y, al mismo tiempo, introducir contexto astronómico y mitológico.",
         },
         {
           en: "Writing these scripts required thinking from the perspective of someone who might never have seen a constellation, a diagram or the visual shape of the sky. Directions, metaphors, rhythm and spatial references had to be tested and rewritten until they made sense through touch and listening.",
-          es: "Escribir estos guiones implicó pensar desde la perspectiva de alguien que tal vez nunca haya visto una constelación, un diagrama o la forma visual del cielo. Direcciones, metáforas, ritmo y referencias espaciales debían probarse y reescribirse hasta tener sentido a través del tacto y la escucha.",
+          es: "Escribir estos guiones implicó pensar desde la perspectiva de alguien que tal vez nunca vio una constelación, un diagrama o la forma visual del cielo. Las direcciones, metáforas, pausas y referencias espaciales debían probarse y reescribirse hasta tener sentido a través del tacto y la escucha.",
         },
         {
           en: "I worked directly on the physical dome to adjust the scripts, recorded temporary versions, tested them with a blind user and iterated based on real feedback.",
-          es: "Trabajé directamente sobre la cúpula física para ajustar los guiones, grabé versiones provisionales, las probé con un usuario ciego e iteré a partir de la retroalimentación real.",
+          es: "Trabajé directamente sobre el domo físico para ajustar los guiones, grabé versiones provisorias, las probé con una persona ciega e iteré a partir de su experiencia real.",
         },
       ],
     },
     {
       kind: "sideimage",
       orientation: "image-left",
-      title: { en: "Documenting for handoff", es: "Documentar para el traspaso" },
+      title: { en: "Documenting for handoff", es: "Documentar para transferir" },
       body: {
-        en: "Because Arathe was designed to keep growing beyond the academic context, I created a technical manual for the interactive dome. The manual documents the hardware architecture, wiring diagrams, software structure, operating states, diagnostic modes, audio synchronisation and Raspberry Pi access. This made documentation part of the product: the installation had to be transferable, not just functional.",
-        es: "Como Arathe estaba pensado para seguir creciendo más allá del contexto académico, creé un manual técnico para la cúpula interactiva. El manual documenta la arquitectura de hardware, los diagramas de cableado, la estructura de software, los estados de operación, los modos de diagnóstico, la sincronización de audio y el acceso a la Raspberry Pi. Así, la documentación pasó a ser parte del producto: la instalación tenía que poder transferirse, no solo funcionar.",
+        en: "Because Arathe was designed to keep growing beyond the academic context, I created a technical manual for the interactive dome. The manual documents the hardware architecture, wiring diagrams, software structure, operating states, diagnostic modes, audio synchronisation and Raspberry Pi access. Documentation became part of the product: the installation had to be transferable, not just functional.",
+        es: "Como Arathe fue pensado para seguir creciendo más allá del contexto académico, creé un manual técnico para el domo interactivo. El manual documenta la arquitectura de hardware, los diagramas de cableado, la estructura de software, los estados de operación, los modos de diagnóstico, la sincronización de audio y el acceso a la Raspberry Pi. La documentación se volvió parte del producto: la instalación tenía que poder transferirse, no solo funcionar.",
       },
       image: {
         kind: "placeholder",
@@ -381,7 +385,7 @@ export const ARATHE_CASE: CaseData = {
       },
       caption: {
         en: "The manual was designed for technicians, educators, museum teams and exhibition staff.",
-        es: "El manual se diseñó para técnicos, educadores, equipos de museo y personal de exhibición.",
+        es: "El manual fue diseñado para técnicos, educadores, equipos de museografía y personal de exhibición.",
       },
     },
     {
@@ -392,8 +396,8 @@ export const ARATHE_CASE: CaseData = {
       },
       paragraphs: [
         {
-          en: "Arathe also extends beyond the physical dome through an interactive educational blog. The first article, focused on Kepler’s Laws, was built in Framer with Rive animations and uses scrollytelling, motion graphics, interactive sections and narrated audio to explain astronomical concepts in a more accessible and engaging way.",
-          es: "Arathe también se extiende más allá de la cúpula física a través de un blog educativo interactivo. El primer artículo, dedicado a las Leyes de Kepler, se construyó en Framer con animaciones de Rive y combina scrollytelling, motion graphics, secciones interactivas y audio narrado para explicar conceptos astronómicos de forma más accesible y atractiva.",
+          en: "Arathe also extends beyond the physical dome through an interactive educational blog. The first article, focused on Kepler’s Laws, was built in Framer with Rive animations and combines scrollytelling, motion graphics, interactive sections and narrated audio to explain astronomical concepts in a more accessible and engaging way.",
+          es: "Arathe también se extiende más allá del domo físico a través de un blog educativo interactivo. El primer artículo, dedicado a las Leyes de Kepler, fue construido en Framer con animaciones de Rive y combina scrollytelling, motion graphics, secciones interactivas y audio narrado para explicar conceptos astronómicos de forma más accesible y atractiva.",
         },
       ],
     },
@@ -410,6 +414,22 @@ export const ARATHE_CASE: CaseData = {
         alt: {
           en: "Screen recording of the interactive blog",
           es: "Captura de pantalla del blog interactivo",
+        },
+      },
+    },
+    {
+      kind: "fullimage",
+      image: {
+        kind: "placeholder",
+        label: {
+          en: "Screenshot of Rive.",
+          es: "Captura de pantalla de Rive.",
+        },
+        tone: "bone",
+        src: img18,
+        alt: {
+          en: "Screenshot of Rive",
+          es: "Captura de pantalla de Rive",
         },
       },
     },
@@ -553,9 +573,34 @@ export const ARATHE_CASE: CaseData = {
         },
       ],
       caption: {
-        en: "Arathe reached public audiences through interviews, articles and cultural coverage.",
-        es: "Arathe llegó al público general a través de entrevistas, artículos y cobertura cultural.",
+        en: "Arathe reached broader audiences through interviews, articles and cultural coverage.",
+        es: "Arathe llegó a públicos más amplios a través de entrevistas, artículos y cobertura cultural.",
       },
+    },
+    {
+      kind: "longtext",
+      title: {
+        en: "Where Arathe is going",
+        es: "Hacia dónde va Arathe",
+      },
+      paragraphs: [
+        {
+          en: "Arathe did not end with the academic submission. Today, we continue developing the project as an incubated venture at ORT’s CIE, working to turn the prototype into a more scalable, sustainable and replicable experience.",
+          es: "Arathe no terminó con la entrega académica. Hoy seguimos desarrollando el proyecto como un emprendimiento incubado en el CIE de ORT, trabajando para convertir el prototipo en una experiencia más escalable, sostenible y replicable.",
+        },
+        {
+          en: "We are applying to public funding opportunities to keep improving the installation, validate it with more users and expand its educational and cultural reach. The project has also started to open conversations beyond Uruguay, including visits and exchanges with representatives from the U.S. Embassy, a NASA contractor and potential collaborators in the United States.",
+          es: "Estamos aplicando a fondos públicos para seguir mejorando la instalación, validarla con más usuarios y ampliar su alcance educativo y cultural. El proyecto también empezó a abrir conversaciones más allá de Uruguay, incluyendo visitas e intercambios con representantes de la Embajada de Estados Unidos, una contractor de la NASA y posibles colaboradores en Estados Unidos.",
+        },
+        {
+          en: "On a personal level, Arathe opened a door into the aerospace sector, a completely new world for me that I am slowly beginning to explore. Today, that path continues through my role as Institutional Relations Assistant at Space Uruguay, where I keep connecting design, accessibility, education and space outreach.",
+          es: "A nivel personal, Arathe me abrió una puerta al sector aeroespacial, un mundo completamente nuevo para mí en el que me estoy adentrando de a poco. Hoy ese camino continúa desde mi rol como Asistente de Relaciones Institucionales en Space Uruguay, donde sigo conectando diseño, accesibilidad, educación y divulgación espacial.",
+        },
+        {
+          en: "The next steps include participating in education hubs, astronomy conferences and national and international spaces related to science communication, as well as submitting the project to awards that can help it grow and reach new audiences.",
+          es: "Los próximos pasos incluyen participar en hubs de educación, conferencias de astronomía y espacios nacionales e internacionales vinculados a la divulgación científica, además de postular el proyecto a premios que puedan ayudarlo a crecer y llegar a nuevos públicos.",
+        },
+      ],
     },
     {
       kind: "learnings",
@@ -565,7 +610,7 @@ export const ARATHE_CASE: CaseData = {
       },
       items: [
         {
-          en: "Accessibility changes the whole design process when it is treated as a starting point instead of an adjustment.",
+          en: "Accessibility changes the entire design process when it is treated as a starting point instead of an adjustment.",
           es: "La accesibilidad cambia todo el proceso de diseño cuando se aborda como punto de partida y no como un ajuste posterior.",
         },
         {
@@ -574,15 +619,15 @@ export const ARATHE_CASE: CaseData = {
         },
         {
           en: "A working prototype is not enough if no one else can operate, repair or evolve it. Documentation is part of the product.",
-          es: "Un prototipo que funciona no alcanza si nadie más puede operarlo, repararlo o hacerlo crecer. La documentación es parte del producto.",
+          es: "Un prototipo funcional no alcanza si nadie más puede operarlo, repararlo o hacerlo crecer. La documentación es parte del producto.",
         },
         {
-          en: "Physical computing forces every decision to become real: cable length, sensor angle, maintenance, transport, comfort and safety all become design constraints.",
-          es: "La computación física obliga a que cada decisión se vuelva real: la longitud del cable, el ángulo del sensor, el mantenimiento, el transporte, la comodidad y la seguridad pasan a ser restricciones de diseño.",
+          en: "Physical computing turns every decision into something tangible: cable length, sensor angle, maintenance, transport, comfort and safety all become design constraints.",
+          es: "La computación física vuelve tangible cada decisión: la longitud del cable, el ángulo del sensor, el mantenimiento, el transporte, la comodidad y la seguridad pasan a ser restricciones de diseño.",
         },
         {
           en: "Multimedia design can connect worlds that often feel separate: programming, industrial design, graphic design, pedagogy, astronomy, accessibility, sound and communication.",
-          es: "El diseño multimedia puede conectar mundos que suelen sentirse aparte: programación, diseño industrial, diseño gráfico, pedagogía, astronomía, accesibilidad, sonido y comunicación.",
+          es: "El diseño multimedia puede conectar mundos que suelen sentirse separados: programación, diseño industrial, diseño gráfico, pedagogía, astronomía, accesibilidad, sonido y comunicación.",
         },
       ],
     },
@@ -590,13 +635,13 @@ export const ARATHE_CASE: CaseData = {
       kind: "closing",
       title: {
         en: "A process that became a direction",
-        es: "Un proceso que se volvió una dirección",
+        es: "Un proceso que se volvió camino",
       },
       body: {
         en: "Arathe reaffirmed the kind of work I want to keep doing: projects where technology, design and purpose move together. It allowed me to connect my technical background with my sensitivity as a designer, my interest in education and my desire to create experiences with social impact. What began as a final degree project became a living process, a growing network and a possible future.",
-        es: "Arathe reafirmó el tipo de trabajo que quiero seguir haciendo: proyectos donde la tecnología, el diseño y el propósito caminan juntos. Me permitió conectar mi base técnica con mi sensibilidad como diseñadora, mi interés por la educación y mi deseo de crear experiencias con impacto social. Lo que empezó como un proyecto final de carrera se convirtió en un proceso vivo, una red creciente y un futuro posible.",
+        es: "Arathe reafirmó el tipo de trabajo que quiero seguir construyendo: proyectos donde tecnología, diseño y propósito avanzan juntos. Me permitió conectar mi base técnica con mi sensibilidad como diseñadora, mi interés por la educación y mi deseo de crear experiencias con impacto social. Lo que empezó como un proyecto final de carrera se convirtió en un proceso vivo, una red en crecimiento y un futuro posible.",
       },
-    },
+    }
   ],
   archive: {
     title: { en: "Visual process archive", es: "Archivo visual del proceso" },

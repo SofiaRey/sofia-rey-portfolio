@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useT } from "../lib/i18n";
 
 const MIN_DISPLAY_MS = 1200;
 
@@ -9,8 +10,10 @@ type Props = {
 
 export function Loader({
   orb = "/videos/process-1.webp",
-  phrase = "the process is taking shape…",
+  phrase,
 }: Props) {
+  const t = useT();
+  const text = phrase ?? t("loader.phrase");
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
@@ -41,7 +44,7 @@ export function Loader({
         className="w-32 h-32 md:w-40 md:h-40 mb-8 select-none animate-[pulse_2.5s_ease-in-out_infinite]"
       />
       <p className="font-serif italic text-lg md:text-xl text-foreground/80 text-pretty">
-        {phrase}
+        {text}
       </p>
     </div>
   );

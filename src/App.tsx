@@ -11,9 +11,11 @@ import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { Loader } from "./components/Loader";
 import { MusicButton } from "./components/MusicButton";
+import { TransitionOverlay } from "./components/TransitionOverlay";
 import { CaseStudy, CASES } from "./pages/CaseStudy";
 import { NotFound } from "./pages/NotFound";
 import { I18nProvider } from "./lib/i18n";
+import { TransitionProvider } from "./lib/transition";
 
 function resolveRoute(pathname: string): "home" | "case" | "not-found" {
   if (pathname === "/") return "home";
@@ -24,6 +26,18 @@ function resolveRoute(pathname: string): "home" | "case" | "not-found" {
 }
 
 function Home() {
+  // When the page is loaded with a hash (e.g. /#procesos from a case page),
+  // the browser tries to scroll before React has rendered the target section,
+  // so the scroll silently fails. Re-run it after mount.
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+    requestAnimationFrame(() => {
+      const el = document.getElementById(hash);
+      if (el) el.scrollIntoView({ behavior: "instant", block: "start" });
+    });
+  }, []);
+
   return (
     <>
       <FrameCanvas />
@@ -56,14 +70,17 @@ export function App() {
   const route = resolveRoute(path);
   return (
     <I18nProvider>
-      <Loader />
-      {route === "case" ? (
-        <CaseStudy />
-      ) : route === "not-found" ? (
-        <NotFound />
-      ) : (
-        <Home />
-      )}
+      <TransitionProvider>
+        <Loader />
+        {route === "case" ? (
+          <CaseStudy />
+        ) : route === "not-found" ? (
+          <NotFound />
+        ) : (
+          <Home />
+        )}
+        <TransitionOverlay />
+      </TransitionProvider>
     </I18nProvider>
   );
 }

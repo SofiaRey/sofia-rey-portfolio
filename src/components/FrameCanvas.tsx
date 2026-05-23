@@ -163,6 +163,18 @@ export function FrameCanvas() {
     }
 
     function handleScroll() {
+      // If the user scrolls during the intro, cancel it and jump straight
+      // into scroll-driven mode so the hero animation gets out of the way.
+      if (
+        stateRef.current.introStarted &&
+        !stateRef.current.introComplete &&
+        window.scrollY > 50
+      ) {
+        cancelAnimationFrame(stateRef.current.animFrame);
+        stateRef.current.introComplete = true;
+        updateScrollFrame();
+        return;
+      }
       if (stateRef.current.introComplete) {
         requestAnimationFrame(updateScrollFrame);
       }

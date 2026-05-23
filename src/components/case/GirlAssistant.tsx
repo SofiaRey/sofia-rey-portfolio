@@ -10,7 +10,6 @@ const PHRASE_KEYS: TKey[] = [
   "girl.p4",
   "girl.p5",
   "girl.p6",
-  "girl.p7",
 ];
 
 export function GirlAssistant() {
@@ -53,7 +52,7 @@ export function GirlAssistant() {
           onFocus={onEnter}
           onBlur={() => setHovered(false)}
           onClick={() => setOpen(true)}
-          aria-label="Open contact form"
+          aria-label={t("girl.open")}
           className="pointer-events-auto relative group bg-transparent border-none p-0"
         >
           <img
@@ -71,6 +70,7 @@ export function GirlAssistant() {
 }
 
 function ContactModal({ onClose }: { onClose: () => void }) {
+  const t = useT();
   const dialogRef = useRef<HTMLDivElement>(null);
   const firstFocusRef = useRef<HTMLInputElement>(null);
 
@@ -99,12 +99,12 @@ function ContactModal({ onClose }: { onClose: () => void }) {
       }
     };
     document.addEventListener("keydown", onKey);
-    const t = setTimeout(() => firstFocusRef.current?.focus(), 0);
+    const focusTimer = setTimeout(() => firstFocusRef.current?.focus(), 0);
     return () => {
       document.body.classList.remove("scroll-locked");
       document.documentElement.style.removeProperty("--sb-w");
       document.removeEventListener("keydown", onKey);
-      clearTimeout(t);
+      clearTimeout(focusTimer);
     };
   }, [onClose]);
 
@@ -112,7 +112,7 @@ function ContactModal({ onClose }: { onClose: () => void }) {
     <div
       role="dialog"
       aria-modal="true"
-      aria-label="Contact form"
+      aria-label={t("girl.dialog")}
       onClick={onClose}
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-6 animate-in fade-in duration-200"
     >
@@ -124,7 +124,7 @@ function ContactModal({ onClose }: { onClose: () => void }) {
         <button
           type="button"
           onClick={onClose}
-          aria-label="Close contact form"
+          aria-label={t("girl.close")}
           className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center border border-black bg-paper hover:bg-black hover:text-paper transition-colors z-10"
         >
           <span aria-hidden="true" className="text-lg leading-none">

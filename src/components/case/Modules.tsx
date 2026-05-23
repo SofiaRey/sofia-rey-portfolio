@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 import { FadeIn } from "../FadeIn";
 import { Placeholder, TwoCol } from "./Primitives";
-import { useLoc } from "../../lib/i18n";
+import { useLoc, useT } from "../../lib/i18n";
 import type {
   CaseBlock,
   ClosingBlock,
@@ -355,6 +355,7 @@ function Results({ block }: ModuleProps<ResultsBlock>) {
 
 function Video({ block }: ModuleProps<VideoBlock>) {
   const loc = useLoc();
+  const t = useT();
   const ratio = block.ratio ?? "16/9";
   const { video } = block;
   const title = loc(block.title);
@@ -378,7 +379,7 @@ function Video({ block }: ModuleProps<VideoBlock>) {
           {"youtubeId" in video ? (
             <iframe
               src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?rel=0&modestbranding=1`}
-              title={title || "YouTube video"}
+              title={title || t("video.fallback")}
               loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen

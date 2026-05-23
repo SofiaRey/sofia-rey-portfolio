@@ -1,6 +1,7 @@
 import { FadeIn } from "./FadeIn";
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import { useT } from "../lib/i18n";
+import { useTransition } from "../lib/transition";
 
 const PROCESSES = [
   { id: 1, title: "Arathe",              src: "/videos/process-1.webp", href: "/case/arathe" },
@@ -24,8 +25,15 @@ function ProcessVideo({ src, title }: { src: string; title: string }) {
 
 export function Procesos() {
   const t = useT();
+  const { start } = useTransition();
   const [paused, setPaused] = useState(false);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+
+  const handleCaseClick = (href: string) => (e: MouseEvent<HTMLAnchorElement>) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    e.preventDefault();
+    start(href);
+  };
 
   return (
     <section id="procesos" className="relative z-10 py-16 md:py-48 px-6">
@@ -48,6 +56,7 @@ export function Procesos() {
             <FadeIn key={process.id}>
               <a
                 href={process.href}
+                onClick={handleCaseClick(process.href)}
                 className="block w-44 h-44"
                 aria-label={process.title}
               >
@@ -77,6 +86,7 @@ export function Procesos() {
                   <a
                     key={process.id}
                     href={process.href}
+                    onClick={handleCaseClick(process.href)}
                     onMouseEnter={() => setHoveredId(process.id)}
                     onMouseLeave={() => setHoveredId(null)}
                     className="group absolute top-1/2 left-1/2 w-40 h-40 -ml-20 -mt-20"
