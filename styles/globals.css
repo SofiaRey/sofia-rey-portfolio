@@ -4,14 +4,20 @@
 @theme inline {
   --font-serif: "Libre Caslon Text", Georgia, serif;
   --font-sans: "Kedebideri", system-ui, sans-serif;
+  --font-hand: "Caveat", cursive;
   --color-accent: #C12D2D;
   --color-background: #ffffff;
   --color-foreground: #000000;
+  --color-paper: #fdfcf9;
+  --color-bone: #E8E2DB;
+  --color-ink: #0a0a0a;
   --animate-marquee: marquee 35s linear infinite;
   --animate-wave: wave 35s linear infinite;
   --animate-pulse-bob: pulse-bob 3.5s ease-in-out infinite;
   --animate-spin-slow: spin-slow 20s linear infinite;
   --animate-spin-slow-reverse: spin-slow-reverse 20s linear infinite;
+  --animate-pulse-soft: pulse-soft 4s ease-in-out infinite;
+  --animate-float-y: float-y 6s ease-in-out infinite;
 }
 
 @layer base {
@@ -23,8 +29,21 @@
 
   html {
     scroll-behavior: smooth;
-    background: #000000;
+    background: #ffffff;
     color-scheme: light;
+  }
+
+  /* Scroll lock — hide the scrollbar and compensate viewport widening
+     so body content, fixed nav, and the girl assistant don't shift. */
+  body.scroll-locked {
+    overflow: hidden;
+    padding-right: var(--sb-w, 0);
+  }
+  body.scroll-locked nav {
+    padding-right: var(--sb-w, 0);
+  }
+  body.scroll-locked .girl-fixed {
+    margin-right: var(--sb-w, 0);
   }
 
   body {
@@ -82,4 +101,151 @@
   to {
     transform: rotate(-360deg);
   }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 0.92;
+  }
+}
+
+@keyframes float-y {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* ── Case study utilities ─────────────────────────────── */
+
+/* Case study subtitle — Kedebideri 12px uppercase 25% (matches landing). */
+.case-subtitle {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+/* Case study label — 9px micro-label for field names, tags, badges. */
+.case-label {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+
+.ph-stripes {
+  background:
+    repeating-linear-gradient(135deg, rgba(10, 10, 10, 0.045) 0 6px, transparent 6px 18px),
+    #efeae3;
+}
+
+.ph-stripes--bone {
+  background:
+    repeating-linear-gradient(135deg, rgba(10, 10, 10, 0.06) 0 6px, transparent 6px 18px),
+    #E8E2DB;
+}
+
+.ph-stripes--dark {
+  background:
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0 6px, transparent 6px 18px),
+    #1a1a1a;
+  color: #fefefe;
+}
+
+.underline-hand {
+  background-image: linear-gradient(transparent 60%, rgba(193, 45, 45, 0.35) 60%);
+  background-repeat: no-repeat;
+  background-size: 100% 90%;
+}
+
+.v-dot {
+  background-image: linear-gradient(to bottom, #0a0a0a 50%, transparent 50%);
+  background-size: 1px 6px;
+  background-repeat: repeat-y;
+}
+
+.h-dot {
+  background-image: linear-gradient(to right, #0a0a0a 50%, transparent 50%);
+  background-size: 6px 1px;
+  background-repeat: repeat-x;
+}
+
+.bubble {
+  position: relative;
+}
+
+.bubble::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  bottom: -7px;
+  width: 14px;
+  height: 14px;
+  background: var(--color-paper);
+  border-right: 1px solid #0a0a0a;
+  border-bottom: 1px solid #0a0a0a;
+  transform: rotate(45deg);
+}
+
+.arrow-link::after {
+  content: "  ↗";
+}
+
+.will-parallax {
+  will-change: transform;
+  transition: transform 0.15s linear;
+}
+
+.modal-enter {
+  animation: modal-in 0.35s ease-out both;
+}
+
+.backdrop-enter {
+  animation: bd-in 0.25s ease-out both;
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bd-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.case-grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 80;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
 }

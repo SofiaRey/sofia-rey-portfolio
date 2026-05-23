@@ -1,6 +1,8 @@
 import waveSvg from "@/assets/footer.svg";
+import { useT } from "../lib/i18n";
 
 export function Footer() {
+  const t = useT();
   return (
     <footer className="relative z-10">
       <div
@@ -20,7 +22,7 @@ export function Footer() {
           height: "40%",
           }}></div>
         <p className="absolute bottom-2 left-0 right-0 text-center text-xs tracking-[0.25em] uppercase text-white">
-          THE PROCESS CONTINUES...
+          {t("footer.tagline")}
         </p>
       </div>
     </footer>

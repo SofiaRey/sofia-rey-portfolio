@@ -1,13 +1,10 @@
-import { useState } from "react";
 import { FadeIn } from "./FadeIn";
-import { Lightbox } from "./Lightbox";
 import portrait from "@/assets/sofia-portrait.png";
+import { useT } from "../lib/i18n";
 
 export function About() {
-  const [expanded, setExpanded] = useState(false);
-
+  const t = useT();
   return (
-    <>
     <section id="sobre-mi" className="relative z-10 py-32 md:py-48 px-6">
       <div className="max-w-5xl mx-auto">
         {/* Portrait + Name (left col, right-aligned on desktop) and Bio (right col) */}
@@ -15,37 +12,26 @@ export function About() {
           <div className="grid md:grid-cols-2 gap-8 md:gap-32 mb-32">
             {/* Left col: portrait, name, title — left on mobile, right on desktop */}
             <div className="flex flex-col items-start md:items-end gap-4 text-left md:text-right">
-              <button
-                type="button"
-                onClick={() => setExpanded(true)}
-                aria-label="Expand portrait"
-                className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border border-black p-0 bg-transparent"
-              >
+              <div className="group w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border border-black">
                 <img
                   src={portrait}
                   alt="Sofía Rey"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
                 />
-              </button>
+              </div>
               <h2 className="font-serif text-3xl md:text-4xl">
-                hi, i'm <span className="text-accent">sofía rey</span>
+                {t("about.greet")} <span className="text-accent">sofía rey</span>
               </h2>
               <p className="text-xs tracking-[0.25em] uppercase">
-                Multimedia Designer
+                {t("about.title")}
               </p>
             </div>
 
             {/* Right col: bio text — always left-aligned */}
             <div className="flex items-start pt-0 md:pt-8">
               <p className="max-w-md text-sm leading-relaxed text-left">
-                I am a multimedia design student passionate about learning new
-                things. This is one of my most notable characteristics. My
-                vocation for design arises from the need to integrate a wide
-                range of personal interests, including computer science, music,
-                language studies and sports. This discipline allows me to mix
-                and match my different interests, enhancing the final result of
-                my work.
+                {t("about.bio")}
               </p>
             </div>
           </div>
@@ -56,11 +42,8 @@ export function About() {
           <FadeIn delay={0}>
             <div className="grid md:grid-cols-2 gap-8 md:gap-32">
               <div className="text-left md:text-right">
-                <h3 className="font-serif text-2xl mb-4">versatility</h3>
-                <p className="text-sm leading-relaxed">
-                  It allows me to adapt my skills to the needs of the
-                  environment, both to work in teams and alone.
-                </p>
+                <h3 className="font-serif text-2xl mb-4">{t("about.t1.h")}</h3>
+                <p className="text-sm leading-relaxed">{t("about.t1.p")}</p>
               </div>
               <div className="hidden md:block">{/* empty right col */}</div>
             </div>
@@ -70,11 +53,8 @@ export function About() {
             <div className="grid md:grid-cols-2 gap-8 md:gap-32">
               <div className="hidden md:block">{/* empty left col */}</div>
               <div className="text-left">
-                <h3 className="font-serif text-2xl mb-4">curiosity</h3>
-                <p className="text-sm leading-relaxed">
-                  I am a curious person, eager to learn and experiment with new
-                  tools as part of my constant development.
-                </p>
+                <h3 className="font-serif text-2xl mb-4">{t("about.t2.h")}</h3>
+                <p className="text-sm leading-relaxed">{t("about.t2.p")}</p>
               </div>
             </div>
           </FadeIn>
@@ -82,12 +62,8 @@ export function About() {
           <FadeIn delay={300}>
             <div className="grid md:grid-cols-2 gap-8 md:gap-32">
               <div className="text-left md:text-right">
-                <h3 className="font-serif text-2xl mb-4">consciousness</h3>
-                <p className="text-sm leading-relaxed">
-                  Understanding the logic behind each step is fundamental to
-                  design. Design is the perfect blend of intuition and
-                  rationality.
-                </p>
+                <h3 className="font-serif text-2xl mb-4">{t("about.t3.h")}</h3>
+                <p className="text-sm leading-relaxed">{t("about.t3.p")}</p>
               </div>
               <div className="hidden md:block">{/* empty right col */}</div>
             </div>
@@ -95,14 +71,5 @@ export function About() {
         </div>
       </div>
     </section>
-    {expanded && (
-      <Lightbox
-        src={portrait}
-        alt="Sofía Rey"
-        rounded
-        onClose={() => setExpanded(false)}
-      />
-    )}
-    </>
   );
 }

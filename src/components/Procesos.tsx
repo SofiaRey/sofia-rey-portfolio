@@ -1,12 +1,13 @@
 import { FadeIn } from "./FadeIn";
 import { useState } from "react";
+import { useT } from "../lib/i18n";
 
 const PROCESSES = [
-  { id: 1, title: "Process 1", src: "/videos/process-1.webp" },
-  { id: 2, title: "Process 2", src: "/videos/process-2.webp" },
-  { id: 3, title: "Process 3", src: "/videos/process-3.webp" },
-  { id: 4, title: "Process 4", src: "/videos/process-4.webp" },
-  { id: 5, title: "Process 5", src: "/videos/process-5.webp" },
+  { id: 1, title: "Arathe",              src: "/videos/process-1.webp", href: "/case/arathe" },
+  { id: 2, title: "Portfolio Video",     src: "/videos/process-2.webp", href: "/case/portfolio-video" },
+  { id: 3, title: "Organigram Rebrand",  src: "/videos/process-3.webp", href: "/case/organigram-rebrand" },
+  { id: 4, title: "Valorant Champions",  src: "/videos/process-4.webp", href: "/case/valorant-champions" },
+  { id: 5, title: "The Winged Chariot",  src: "/videos/process-5.webp", href: "/case/winged-chariot-allegory" },
 ];
 
 const CIRCLE_RADIUS = 200;
@@ -22,6 +23,7 @@ function ProcessVideo({ src, title }: { src: string; title: string }) {
 }
 
 export function Procesos() {
+  const t = useT();
   const [paused, setPaused] = useState(false);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
 
@@ -33,8 +35,8 @@ export function Procesos() {
             <div>{/* empty left col */}</div>
             <div className="text-left">
               <h2 className="font-serif text-3xl md:text-5xl">
-                my<br className="md:hidden" />
-                {" "}<span className="text-accent">processes</span>
+                {t("procesos.myMy")}<br className="md:hidden" />
+                {" "}<span className="text-accent">{t("procesos.processes")}</span>
               </h2>
             </div>
           </div>
@@ -44,7 +46,11 @@ export function Procesos() {
         <div className="md:hidden flex flex-col items-start gap-8">
           {PROCESSES.map((process) => (
             <FadeIn key={process.id}>
-              <a href="#" className="block w-24 h-24" aria-label={process.title}>
+              <a
+                href={process.href}
+                className="block w-44 h-44"
+                aria-label={process.title}
+              >
                 <ProcessVideo src={process.src} title={process.title} />
               </a>
             </FadeIn>
@@ -70,7 +76,7 @@ export function Procesos() {
                 return (
                   <a
                     key={process.id}
-                    href="#"
+                    href={process.href}
                     onMouseEnter={() => setHoveredId(process.id)}
                     onMouseLeave={() => setHoveredId(null)}
                     className="group absolute top-1/2 left-1/2 w-40 h-40 -ml-20 -mt-20"

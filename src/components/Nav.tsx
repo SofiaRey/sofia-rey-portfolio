@@ -1,13 +1,16 @@
 import { useState, useEffect, useRef } from "react";
+import { useT, type TKey } from "../lib/i18n";
+import { LangToggle } from "./LangToggle";
 
-const SECTIONS = [
-  { id: "inicio", label: "HOME" },
-  { id: "sobre-mi", label: "ABOUT" },
-  { id: "procesos", label: "PROCESSES" },
-  { id: "contacto", label: "CONTACT" },
+const SECTIONS: { id: string; key: TKey }[] = [
+  { id: "inicio",    key: "nav.home" },
+  { id: "sobre-mi",  key: "nav.about" },
+  { id: "procesos",  key: "nav.processes" },
+  { id: "contacto",  key: "nav.contact" },
 ];
 
 export function Nav() {
+  const t = useT();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("inicio");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -60,7 +63,7 @@ export function Nav() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
           scrolled
             ? "bg-white/40 backdrop-blur-md border-b border-black"
             : "bg-transparent"
@@ -98,16 +101,17 @@ export function Nav() {
                     : "text-foreground hover:text-accent"
                 }`}
               >
-                {section.label}
+                {t(section.key)}
               </button>
             ))}
+            <LangToggle />
           </div>
 
           {/* Mobile hamburger */}
           <button
             className="md:hidden flex flex-col gap-1.5 cursor-pointer border-none bg-transparent p-2"
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-label={menuOpen ? t("nav.closeMenu") : t("nav.openMenu")}
             aria-expanded={menuOpen}
           >
             <span
@@ -141,9 +145,10 @@ export function Nav() {
                   : "text-foreground"
               }`}
             >
-              {section.label.toLowerCase()}
+              {t(section.key).toLowerCase()}
             </button>
           ))}
+          <LangToggle className="mt-6" />
         </div>
       </div>
     </>

@@ -13,11 +13,14 @@ export function Lightbox({ src, alt, onClose, rounded = false }: Props) {
       if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", onKey);
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const sbWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty("--sb-w", `${sbWidth}px`);
+    document.body.classList.add("scroll-locked");
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prev;
+      document.body.classList.remove("scroll-locked");
+      document.documentElement.style.removeProperty("--sb-w");
     };
   }, [onClose]);
 
@@ -29,22 +32,28 @@ export function Lightbox({ src, alt, onClose, rounded = false }: Props) {
       onClick={onClose}
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-6 animate-in fade-in duration-200"
     >
-      <img
-        src={src}
-        alt={alt}
+      <div
         onClick={(e) => e.stopPropagation()}
-        className={`max-w-[90vw] max-h-[90vh] object-contain border border-black ${
-          rounded ? "rounded-full aspect-square object-cover" : ""
-        }`}
-      />
-      <button
-        type="button"
-        onClick={onClose}
-        aria-label="Close"
-        className="absolute top-4 right-4 md:top-6 md:right-6 text-white text-4xl leading-none cursor-pointer bg-transparent border-none p-2"
+        className="relative inline-block"
       >
-        ×
-      </button>
+        <img
+          src={src}
+          alt={alt}
+          className={`max-w-[90vw] max-h-[90vh] object-contain border border-black block ${
+            rounded ? "rounded-full aspect-square object-cover" : ""
+          }`}
+        />
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center border border-black bg-paper hover:bg-black hover:text-paper transition-colors"
+        >
+          <span aria-hidden="true" className="text-lg leading-none">
+            ×
+          </span>
+        </button>
+      </div>
     </div>
   );
 }
