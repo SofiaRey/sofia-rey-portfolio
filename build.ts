@@ -141,44 +141,12 @@ const CASES: CaseRoute[] = [
   },
 ];
 
-// Generate 1200×630 OG images from each case's cover.webp via ffmpeg.
-const ogOutDir = path.join(outdir, "og");
-await mkdir(ogOutDir, { recursive: true });
-for (const c of CASES) {
-  const cover = path.join(
-    process.cwd(),
-    "src",
-    "assets",
-    "cases",
-    c.folder,
-    "cover.webp",
-  );
-  const out = path.join(ogOutDir, `${c.slug}.png`);
-  if (!existsSync(cover)) {
-    console.warn(` ! missing cover for ${c.slug}: ${cover}`);
-    continue;
-  }
-  const proc = Bun.spawn(
-    [
-      "ffmpeg",
-      "-y",
-      "-loglevel",
-      "error",
-      "-i",
-      cover,
-      "-vf",
-      "scale=1200:630:force_original_aspect_ratio=increase,crop=1200:630",
-      out,
-    ],
-    { stderr: "pipe" },
-  );
-  await proc.exited;
-  if (proc.exitCode === 0) {
-    console.log(` generated dist/og/${c.slug}.png`);
-  } else {
-    const err = await new Response(proc.stderr).text();
-    console.warn(` ! ffmpeg failed for ${c.slug}: ${err.trim()}`);
-  }
+// OG images are generated locally (ffmpeg isn't available on Vercel) and
+// shipped from public/og/.  Just copy them into dist.
+const ogSrcDir = path.join(process.cwd(), "public", "og");
+if (existsSync(ogSrcDir)) {
+  await cp(ogSrcDir, path.join(outdir, "og"), { recursive: true });
+  console.log(" copied public/og → dist/og");
 }
 
 if (baseHtml) {
