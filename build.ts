@@ -197,7 +197,7 @@ if (existsSync(videosSrc)) {
   console.log(" copied public/videos/*.webp → dist/videos");
 }
 
-for (const f of ["favicon.png", "favicon-dark.png"]) {
+for (const f of ["favicon.png", "favicon-dark.png", "og-image.png"]) {
   const src = path.join(process.cwd(), "public", f);
   if (existsSync(src)) {
     await cp(src, path.join(outdir, f));
