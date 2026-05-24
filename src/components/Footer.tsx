@@ -5,6 +5,9 @@ export function Footer() {
   const t = useT();
   return (
     <footer className="relative z-10">
+      <p className="max-w-5xl mx-auto px-6 py-3 text-center text-[8px] lowercase leading-relaxed text-foreground/60">
+        {t("footer.disclaimer")}
+      </p>
       <div
         className="relative animate-wave"
         style={{

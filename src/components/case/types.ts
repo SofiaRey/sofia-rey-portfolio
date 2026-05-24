@@ -190,4 +190,5 @@ export type CaseData = {
     prev: NeighbourCase;
     next: NeighbourCase;
   };
+  copyrightNote?: LocalizedString;
 };

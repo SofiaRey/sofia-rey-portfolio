@@ -76,6 +76,10 @@ const DICT = {
     en: "THE PROCESS CONTINUES...",
     es: "EL PROCESO CONTINÚA...",
   },
+  "footer.disclaimer": {
+    en: "all third-party brands, logos, screenshots, and visual references belong to their respective owners and are included for academic, contextual, and non-commercial purposes only.",
+    es: "las marcas, logotipos, capturas y referencias visuales de terceros pertenecen a sus respectivos titulares y se incluyen únicamente con fines académicos, contextuales y no comerciales.",
+  },
 
   // Case study chrome
   "case.backProcesses":   { en: "← processes",     es: "← procesos"     },

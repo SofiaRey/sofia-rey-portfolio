@@ -172,6 +172,11 @@ function CaseHero() {
 
         <FadeIn delay={200}>
           <Placeholder image={D.cover} ratio="21/9" />
+          {D.copyrightNote && (
+            <p className="mt-3 text-[8px] lowercase leading-relaxed text-foreground/60">
+              {loc(D.copyrightNote)}
+            </p>
+          )}
         </FadeIn>
 
         <FadeIn delay={260}>
@@ -349,6 +354,9 @@ function CaseFooter() {
   const t = useT();
   return (
     <footer className="relative z-10">
+      <p className="max-w-5xl mx-auto px-6 py-3 text-center text-[8px] lowercase leading-relaxed text-foreground/60">
+        {t("footer.disclaimer")}
+      </p>
       <div
         className="relative animate-wave"
         style={{

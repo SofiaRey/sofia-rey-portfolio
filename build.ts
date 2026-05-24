@@ -197,6 +197,12 @@ if (existsSync(videosSrc)) {
   console.log(" copied public/videos/*.webp → dist/videos");
 }
 
+const audioSrc = path.join(process.cwd(), "public/audio");
+if (existsSync(audioSrc)) {
+  await cp(audioSrc, path.join(outdir, "audio"), { recursive: true });
+  console.log(" copied public/audio → dist/audio");
+}
+
 for (const f of ["favicon.png", "favicon-dark.png", "og-image.png"]) {
   const src = path.join(process.cwd(), "public", f);
   if (existsSync(src)) {

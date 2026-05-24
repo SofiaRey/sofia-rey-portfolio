@@ -423,4 +423,8 @@ export const VALORANT_CHAMPIONS_CASE: CaseData = {
       },
     },
   },
+  copyrightNote: {
+    en: "Note: Valorant and its visual elements belong to Riot Games, Inc. This project is presented for academic and portfolio purposes only, with no commercial intent or official affiliation.",
+    es: "Nota: Valorant y sus elementos visuales pertenecen a Riot Games, Inc. Este proyecto se presenta únicamente con fines académicos y de portafolio, sin intención comercial ni afiliación oficial.",
+  },
 };

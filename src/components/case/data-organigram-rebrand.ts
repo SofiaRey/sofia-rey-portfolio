@@ -541,4 +541,8 @@ export const ORGANIGRAM_REBRAND_CASE: CaseData = {
       },
     },
   },
+  copyrightNote: {
+    en: "Note: Organigram, its brand, and associated visual materials belong to their respective owners. This project is presented for academic and portfolio purposes only.",
+    es: "Nota: Organigram, su marca y los materiales visuales asociados pertenecen a sus respectivos titulares. Este proyecto se presenta únicamente con fines académicos y de portafolio.",
+  },
 };
