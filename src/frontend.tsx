@@ -7,7 +7,10 @@
 
 import { createRoot } from "react-dom/client";
 import { Agentation } from "agentation";
+import { inject } from "@vercel/analytics";
 import { App } from "./App";
+
+inject();
 
 // Inject favicons at runtime so Bun's HTML bundler doesn't try to resolve them
 // (they're served by the dev/prod server at /favicon*.png, not bundled).

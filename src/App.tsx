@@ -1,5 +1,5 @@
 import "./index.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FrameCanvas } from "./components/FrameCanvas";
 import { NoiseOverlay } from "./components/NoiseOverlay";
 import { Nav } from "./components/Nav";
@@ -70,6 +70,17 @@ export function App() {
     window.addEventListener("popstate", on);
     return () => window.removeEventListener("popstate", on);
   }, []);
+
+  // Fire a Vercel Analytics pageview on every SPA navigation. The initial load
+  // is already tracked by inject() so we skip the first render.
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    (window as unknown as { va?: (e: "pageview") => void }).va?.("pageview");
+  }, [path]);
 
   const route = resolveRoute(path);
   return (
