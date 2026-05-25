@@ -86,6 +86,10 @@ export const ARATHE_CASE: CaseData = {
         label: { en: "Arathe on Instagram", es: "Arathe en Instagram" },
         href: "https://www.instagram.com/arathe.uy/",
       },
+      {
+        label: { en: "Arathe on Behance", es: "Arathe en Behance" },
+        href: "https://www.behance.net/gallery/249953515/Arathe-El-cielo-mas-cerca",
+      },
     ],
     readingTime: { en: "6 min read", es: "6 min de lectura" },
   },
