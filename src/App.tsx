@@ -14,7 +14,7 @@ import { MusicButton } from "./components/MusicButton";
 import { TransitionOverlay } from "./components/TransitionOverlay";
 import { CaseStudy, CASES } from "./pages/CaseStudy";
 import { NotFound } from "./pages/NotFound";
-import { I18nProvider } from "./lib/i18n";
+import { I18nProvider, useT } from "./lib/i18n";
 import { TransitionProvider } from "./lib/transition";
 
 function resolveRoute(pathname: string): "home" | "case" | "not-found" {
@@ -26,6 +26,7 @@ function resolveRoute(pathname: string): "home" | "case" | "not-found" {
 }
 
 function Home() {
+  const t = useT();
   // When the page is loaded with a hash (e.g. /#procesos from a case page),
   // the browser tries to scroll before React has rendered the target section,
   // so the scroll silently fails. Re-run it after mount.
@@ -37,6 +38,9 @@ function Home() {
       if (el) el.scrollIntoView({ behavior: "instant", block: "start" });
     });
   }, []);
+  useEffect(() => {
+    document.title = `Sofía Rey — ${t("site.role")}`;
+  }, [t]);
 
   return (
     <>

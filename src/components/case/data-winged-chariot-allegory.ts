@@ -4,7 +4,7 @@ import wc1 from "@/assets/cases/winged-chariot/1.webp";
 
 export const WINGED_CHARIOT_CASE: CaseData = {
   slug: "winged-chariot-allegory",
-  name: "The Winged Chariot",
+  name: { en: "The Winged Chariot Allegory", es: "Alegoría del carro alado" },
   tagline: {
     en: "A motion piece translating Plato’s allegory into a visual language of digital collage, vectors and symbolic imagery.",
     es: "Una pieza de motion que traduce la alegoría de Platón a un lenguaje visual de collage digital, vectores e imaginería simbólica.",
@@ -48,7 +48,7 @@ export const WINGED_CHARIOT_CASE: CaseData = {
         href: "https://www.youtube.com/watch?v=Sefcy8-kkBQ",
       },
     ],
-    readingTime: { en: "4 min read", es: "4 min de lectura" },
+    readingTime: { en: "3 min read", es: "3 min de lectura" },
   },
   intro: {
     context: {
@@ -80,7 +80,7 @@ export const WINGED_CHARIOT_CASE: CaseData = {
       kind: "videoblock",
       title: { en: "The Winged Chariot", es: "El carro alado" },
       video: {
-        youtubeId: "Sefcy8-kkBQ",
+        vimeoId: "1195363592",
         poster: {
           kind: "placeholder",
           label: {
@@ -238,7 +238,7 @@ export const WINGED_CHARIOT_CASE: CaseData = {
   ],
   neighbours: {
     prev: {
-      name: "Valorant Champions",
+      name: { en: "Valorant Champions", es: "Valorant Champions" },
       slug: "valorant-champions",
       kind: {
         en: "Motion · Broadcast Identity",
@@ -246,7 +246,7 @@ export const WINGED_CHARIOT_CASE: CaseData = {
       },
     },
     next: {
-      name: "Arathe",
+      name: { en: "Arathe", es: "Arathe" },
       slug: "arathe",
       kind: {
         en: "Accessibility · Physical computing",

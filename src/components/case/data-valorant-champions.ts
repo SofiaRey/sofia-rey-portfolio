@@ -10,7 +10,7 @@ import vc7 from "@/assets/cases/valorant-champions/7.webp";
 
 export const VALORANT_CHAMPIONS_CASE: CaseData = {
   slug: "valorant-champions",
-  name: "Valorant Champions",
+  name: { en: "Valorant Champions", es: "Valorant Champions" },
   tagline: {
     en: "An animated broadcast identity system for Valorant Champions, developed from static graphics into final motion pieces.",
     es: "Un sistema de identidad animada para broadcast de Valorant Champions, desarrollado desde piezas gráficas estáticas hasta animaciones finales.",
@@ -407,7 +407,7 @@ export const VALORANT_CHAMPIONS_CASE: CaseData = {
   ],
   neighbours: {
     prev: {
-      name: "Organigram Rebrand",
+      name: { en: "Organigram Rebrand", es: "Organigram Rebrand" },
       slug: "organigram-rebrand",
       kind: {
         en: "Branding · Visual Identity",
@@ -415,7 +415,7 @@ export const VALORANT_CHAMPIONS_CASE: CaseData = {
       },
     },
     next: {
-      name: "The Winged Chariot",
+      name: { en: "The Winged Chariot Allegory", es: "Alegoría del carro alado" },
       slug: "winged-chariot-allegory",
       kind: {
         en: "Motion · Visual metaphor",

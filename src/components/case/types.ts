@@ -126,7 +126,8 @@ export type ClosingBlock = {
 
 export type CaseVideo =
   | { src: string; poster?: PlaceholderImage }
-  | { youtubeId: string; poster?: PlaceholderImage };
+  | { youtubeId: string; poster?: PlaceholderImage }
+  | { vimeoId: string; vimeoHash?: string; poster?: PlaceholderImage };
 
 export type VideoBlock = {
   kind: "videoblock";
@@ -160,7 +161,7 @@ export type ArchiveItem = PlaceholderImage & {
 };
 
 export type NeighbourCase = {
-  name: string;
+  name: LocalizedString;
   slug: string;
   kind: LocalizedString;
   tone?: Tone;
@@ -174,7 +175,7 @@ export type CaseLogo = {
 
 export type CaseData = {
   slug: string;
-  name: string;
+  name: LocalizedString;
   tagline: LocalizedString;
   logo?: CaseLogo;
   cover: PlaceholderImage;

@@ -32,6 +32,7 @@ function pickCase(): CaseData {
 
 function CaseNav() {
   const t = useT();
+  const loc = useLoc();
   const D = pickCase();
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/40 backdrop-blur-md border-b border-black">
@@ -61,7 +62,7 @@ function CaseNav() {
           </a>
           <span className="text-xs tracking-[0.25em] opacity-50">/</span>
           <span className="text-xs tracking-[0.25em] uppercase font-bold text-accent">
-            {D.name}
+            {loc(D.name)}
           </span>
         </div>
 
@@ -136,7 +137,7 @@ function CaseHero() {
               {D.logo ? (
                 <img
                   src={D.logo.src}
-                  alt={D.logo.alt ?? D.name}
+                  alt={D.logo.alt ?? loc(D.name)}
                   style={{ maxHeight: D.logo.maxHeight ?? 96 }}
                   className="block w-auto"
                 />
@@ -145,7 +146,7 @@ function CaseHero() {
                   className="font-serif lowercase text-pretty"
                   style={{ fontSize: 48, lineHeight: 1 }}
                 >
-                  {D.name.toLowerCase()}
+                  {loc(D.name).toLowerCase()}
                 </h1>
               )}
             </div>
@@ -324,7 +325,7 @@ function NeighbourCard({
       <div className={isPrev ? "" : "md:text-right"}>
         <div className="case-label text-foreground/60 mb-1">{loc(item.kind)}</div>
         <div className="font-serif text-2xl md:text-3xl leading-tight transition-colors group-hover:text-foreground/50">
-          {item.name}
+          {loc(item.name)}
         </div>
       </div>
     </a>
@@ -385,6 +386,7 @@ function CaseFooter() {
 
 export function CaseStudy() {
   const D = pickCase();
+  const loc = useLoc();
   useEffect(() => {
     document.body.classList.add("case-grain");
     document.body.style.backgroundColor = "#fdfcf9";
@@ -393,6 +395,9 @@ export function CaseStudy() {
       document.body.style.backgroundColor = "";
     };
   }, []);
+  useEffect(() => {
+    document.title = `${loc(D.name)} — Sofía Rey`;
+  }, [loc, D]);
 
   return (
     <div className="relative overflow-hidden bg-paper text-foreground">

@@ -386,6 +386,16 @@ function Video({ block }: ModuleProps<VideoBlock>) {
               referrerPolicy="strict-origin-when-cross-origin"
               className="absolute inset-0 w-full h-full"
             />
+          ) : "vimeoId" in video ? (
+            <iframe
+              src={`https://player.vimeo.com/video/${video.vimeoId}${video.vimeoHash ? `?h=${video.vimeoHash}` : ""}`}
+              title={title || t("video.fallback")}
+              loading="lazy"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+              className="absolute inset-0 w-full h-full"
+            />
           ) : (
             <video
               src={video.src}

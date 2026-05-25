@@ -9,7 +9,7 @@ import pv6 from "@/assets/cases/portfolio-video/6.webp";
 
 export const PORTFOLIO_VIDEO_CASE: CaseData = {
   slug: "portfolio-video",
-  name: "Portfolio Video",
+  name: { en: "Portfolio Video", es: "Video Portafolio" },
   tagline: {
     en: "An AI-assisted audiovisual piece that introduces my portfolio and translates my design identity into motion.",
     es: "Una pieza audiovisual asistida por IA que presenta mi portfolio y traduce mi identidad como diseñadora al movimiento.",
@@ -60,7 +60,7 @@ export const PORTFOLIO_VIDEO_CASE: CaseData = {
         href: "https://sofia-rey-portfolio.vercel.app/",
       },
     ],
-    readingTime: { en: "5 min read", es: "5 min de lectura" },
+    readingTime: { en: "6 min read", es: "6 min de lectura" },
   },
   intro: {
     context: {
@@ -92,7 +92,7 @@ export const PORTFOLIO_VIDEO_CASE: CaseData = {
       kind: "videoblock",
       title: { en: "Touching the Process", es: "Touching the Process" },
       video: {
-        youtubeId: "hEbSAWX2LHk",
+        vimeoId: "1195363592",
         poster: {
           kind: "placeholder",
           label: {
@@ -409,7 +409,7 @@ export const PORTFOLIO_VIDEO_CASE: CaseData = {
   ],
   neighbours: {
     prev: {
-      name: "Arathe",
+      name: { en: "Arathe", es: "Arathe" },
       slug: "arathe",
       kind: {
         en: "Accessibility · Physical computing",
@@ -417,7 +417,7 @@ export const PORTFOLIO_VIDEO_CASE: CaseData = {
       },
     },
     next: {
-      name: "Organigram Rebrand",
+      name: { en: "Organigram Rebrand", es: "Organigram Rebrand" },
       slug: "organigram-rebrand",
       kind: { en: "Branding · Visual identity", es: "Branding · Identidad visual" },
     },

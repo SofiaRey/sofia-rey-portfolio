@@ -16,7 +16,7 @@ import og12 from "@/assets/cases/organigram/12.webp";
 
 export const ORGANIGRAM_REBRAND_CASE: CaseData = {
   slug: "organigram-rebrand",
-  name: "Organigram Rebrand",
+  name: { en: "Organigram Rebrand", es: "Organigram Rebranding" },
   tagline: {
     en: "A speculative rebrand exploring how a cannabis company could move beyond obvious symbols and build a more refined, trustworthy identity.",
     es: "Un rebranding especulativo que explora cómo una empresa de cannabis puede ir más allá de los símbolos obvios y construir una identidad más refinada y confiable.",
@@ -525,7 +525,7 @@ export const ORGANIGRAM_REBRAND_CASE: CaseData = {
   },
   neighbours: {
     prev: {
-      name: "Portfolio Video",
+      name: { en: "Portfolio Video", es: "Portfolio Video" },
       slug: "portfolio-video",
       kind: {
         en: "AI · Motion · Process",
@@ -533,7 +533,7 @@ export const ORGANIGRAM_REBRAND_CASE: CaseData = {
       },
     },
     next: {
-      name: "Valorant Champions",
+      name: { en: "Valorant Champions", es: "Valorant Champions" },
       slug: "valorant-champions",
       kind: {
         en: "Motion · Broadcast graphics",

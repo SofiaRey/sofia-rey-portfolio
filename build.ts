@@ -135,7 +135,7 @@ const CASES: CaseRoute[] = [
   {
     slug: "winged-chariot-allegory",
     folder: "winged-chariot",
-    name: "The Winged Chariot",
+    name: "The Winged Chariot Allegory",
     description:
       "A motion piece translating Plato's allegory into a visual language of digital collage and symbolic imagery.",
   },

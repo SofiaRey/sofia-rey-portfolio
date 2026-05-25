@@ -22,7 +22,7 @@ import img18 from "@/assets/cases/arathe/rive.png";
 
 export const ARATHE_CASE: CaseData = {
   slug: "arathe",
-  name: "Arathe",
+  name: { en: "Arathe", es: "Arathe" },
   tagline: {
     en: "A multisensory astronomy experience that makes the sky accessible through touch, sound and vibration.",
     es: "Una experiencia astronómica multisensorial que vuelve el cielo accesible a través del tacto, el sonido y la vibración.",
@@ -82,8 +82,12 @@ export const ARATHE_CASE: CaseData = {
         label: { en: "Interactive Kepler blog", es: "Blog interactivo de Kepler" },
         href: "https://www.arathe.com.uy/blog/kepler",
       },
+      {
+        label: { en: "Arathe on Instagram", es: "Arathe en Instagram" },
+        href: "https://www.instagram.com/arathe.uy/",
+      },
     ],
-    readingTime: { en: "8 min read", es: "8 min de lectura" },
+    readingTime: { en: "6 min read", es: "6 min de lectura" },
   },
   intro: {
     context: {
@@ -738,12 +742,12 @@ export const ARATHE_CASE: CaseData = {
   },
   neighbours: {
     prev: {
-      name: "The Winged Chariot",
+      name: { en: "The Winged Chariot Allegory", es: "Alegoría del carro alado" },
       slug: "winged-chariot-allegory",
       kind: { en: "Motion · Visual metaphor", es: "Motion · Metáfora visual" },
     },
     next: {
-      name: "Portfolio Video",
+      name: { en: "Portfolio Video", es: "Portfolio Video" },
       slug: "portfolio-video",
       kind: { en: "AI · Motion · Process", es: "IA · Motion · Proceso" },
     },

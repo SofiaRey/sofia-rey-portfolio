@@ -71,6 +71,12 @@ const DICT = {
   "contact.placeholderMessage": { en: "TELL ME MORE...", es: "CUÉNTAME MÁS..." },
   "contact.send":               { en: "SEND",           es: "ENVIAR" },
 
+  // Site
+  "site.role": {
+    en: "Multimedia Designer",
+    es: "Diseñadora Multimedia",
+  },
+
   // Footer
   "footer.tagline": {
     en: "THE PROCESS CONTINUES...",
